@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://ijdcl1vcseva"]
+
+[ext_resource type="Texture2D" uid="uid://bi615w538ga5j" path="res://assets/monochrome-transparent_packed.png" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://dbs08jdkeim1h" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Script" uid="uid://ckapp1kr7cgbg" path="res://player/sonar_graphics.gd" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://q4fvms7p6rgj" path="res://player/sonar_area.gd" id="3_yw30f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rkbax"]
+radius = 72.0
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_rkbax")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("1_oul6g")
+centered = false
+hframes = 49
+vframes = 22
+frame = 73
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(8, 8)
+target_position = Vector2(16, 0)
+collision_mask = 4
+
+[node name="SonarArea" type="Area2D" parent="."]
+position = Vector2(8, 8)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_yw30f")
+max_radius = 64.0
+radius_step = 16.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SonarArea"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_rkbax")
+
+[node name="SonarGraphics" type="Node2D" parent="SonarArea"]
+script = ExtResource("3_g1dw6")
