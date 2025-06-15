@@ -3,23 +3,36 @@ extends Area2D
 
 @export var min_radius := 16.0
 @export var max_radius := min_radius * 8
-@export var radius_step := 10.0
-var current_radius: float
+@export var radius_step := 16.0
+
+var _current_radius:= min_radius
 
 @onready var collision_shape_2d: CollisionShape2D = %CollisionShape2D
-
+@onready var sonar_graphics: Node2D = %SonarGraphics
+@onready var sonar_animation_player: AnimationPlayer = %SonarAnimationPlayer
 
 func _ready() -> void:
 	body_shape_entered.connect(_on_body_shape_entered)
 
 
-func _process(delta: float) -> void:
-	var circle: CircleShape2D = collision_shape_2d.shape
-	current_radius += radius_step * delta
-	if current_radius > max_radius:
-		current_radius = min_radius
+func create_echo() -> void:
+	sonar_graphics.show()
+	sonar_animation_player.play("echo")
+	await sonar_animation_player.animation_finished
+	sonar_graphics.hide()
 
-	circle.radius = current_radius
+
+func old_create_echo(delta: float) -> void:
+	var circle: CircleShape2D = collision_shape_2d.shape
+	_current_radius += radius_step * delta
+	if _current_radius > max_radius:
+		radius_step = -radius_step
+
+	if _current_radius < min_radius:
+		return
+
+	sonar_graphics.show()
+	circle.radius = _current_radius
 
 
 func _on_body_shape_entered(

@@ -10,16 +10,19 @@ const ACTION_VECTORS = {
 	"move_up": Vector2.UP
 }
 
-var moving := false
 var speed := 200
 
 @onready var ray_cast_2d: RayCast2D = %RayCast2D
-
+@onready var sonar_area: SonarArea = %SonarArea
 
 func _unhandled_input(event: InputEvent) -> void:
 	for action in ACTION_VECTORS.keys():
 		if event.is_action_released(action):
 			_move(action)
+
+	if event.is_action_pressed("send_echo"):
+		sonar_area.create_echo()
+
 
 
 func _move(action: String) -> void:
