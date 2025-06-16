@@ -1,0 +1,118 @@
+[gd_scene load_steps=13 format=3 uid="uid://ijdcl1vcseva"]
+
+[ext_resource type="Script" uid="uid://dbs08jdkeim1h" path="res://scripts/player/player.gd" id="1_rkbax"]
+[ext_resource type="Texture2D" uid="uid://850xd700youe" path="res://assets/graphics/monochrome-transparent_packed_edited.png" id="2_yw30f"]
+[ext_resource type="Script" uid="uid://ckapp1kr7cgbg" path="res://scripts/player/sonar_graphics.gd" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://q4fvms7p6rgj" path="res://scripts/player/sonar_area.gd" id="3_yw30f"]
+[ext_resource type="Script" uid="uid://cjlk532q508ll" path="res://scripts/player/gun.gd" id="5_p47bc"]
+[ext_resource type="Texture2D" uid="uid://cwiwecvksqvdv" path="res://assets/graphics/slash_04.png" id="6_qek5x"]
+[ext_resource type="Material" uid="uid://bj0dr8iky0by4" path="res://resources/sound_wave_particles.tres" id="7_5gtgg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p47bc"]
+size = Vector2(14, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rkbax"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_qjkh3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:shape:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [8.0]
+}
+
+[sub_resource type="Animation" id="Animation_yw30f"]
+resource_name = "echo"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:shape:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [8.0, 64.0, 8.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g6k8r"]
+_data = {
+&"RESET": SubResource("Animation_qjkh3"),
+&"echo": SubResource("Animation_yw30f")
+}
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_rkbax")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_p47bc")
+
+[node name="SpritePivot" type="Marker2D" parent="."]
+position = Vector2(0, -6)
+
+[node name="Sprite2D" type="Sprite2D" parent="SpritePivot"]
+unique_name_in_owner = true
+position = Vector2(-8, -8)
+texture = ExtResource("2_yw30f")
+centered = false
+hframes = 49
+vframes = 22
+frame = 73
+
+[node name="SonarArea" type="Area2D" parent="SpritePivot"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_yw30f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpritePivot/SonarArea"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_rkbax")
+
+[node name="SonarGraphics" type="Node2D" parent="SpritePivot/SonarArea"]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("3_g1dw6")
+
+[node name="SonarAnimationPlayer" type="AnimationPlayer" parent="SpritePivot/SonarArea"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_g6k8r")
+}
+
+[node name="Gun" type="Sprite2D" parent="SpritePivot"]
+unique_name_in_owner = true
+position = Vector2(16, 0)
+texture = ExtResource("2_yw30f")
+region_enabled = true
+region_rect = Rect2(592, 144, 16, 16)
+script = ExtResource("5_p47bc")
+
+[node name="RayCast2D" type="RayCast2D" parent="SpritePivot/Gun"]
+unique_name_in_owner = true
+position = Vector2(6, 0)
+target_position = Vector2(192, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SpritePivot/Gun"]
+unique_name_in_owner = true
+texture = ExtResource("6_qek5x")
+process_material = ExtResource("7_5gtgg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
