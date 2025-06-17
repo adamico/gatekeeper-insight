@@ -1,28 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://di1gy1dspp8h3"]
+[gd_scene load_steps=6 format=3 uid="uid://di1gy1dspp8h3"]
 
 [ext_resource type="Script" uid="uid://b6ghup2ua3vo" path="res://scripts/main.gd" id="1_jyhfs"]
-[ext_resource type="Texture2D" uid="uid://cks3qexeltlwe" path="res://assets/graphics/background.png" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://318mr7ueabam" path="res://assets/graphics/thinker.png" id="2_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://cks3qexeltlwe" path="res://assets/graphics/background.png" id="2_sugp2"]
+[ext_resource type="Texture2D" uid="uid://b62letrm8km21" path="res://assets/graphics/psychic.png" id="4_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://bheondsqtir4" path="res://assets/graphics/smell.png" id="5_tefeu"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_jyhfs")
 
 [node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.26, 0.26, 0.26, 1)
+position = Vector2(680, 227)
 scale = Vector2(0.816666, 0.816667)
-texture = ExtResource("2_0wfyh")
+texture = ExtResource("2_sugp2")
 centered = false
+offset = Vector2(-849.797, -356.326)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 [node name="World" type="Node2D" parent="."]
 position = Vector2(88, -64)
 
 [node name="GateKeeper" type="Sprite2D" parent="World"]
-position = Vector2(104, 359)
+position = Vector2(543, 591)
 texture = ExtResource("2_0wfyh")
 
 [node name="Psychic" type="Sprite2D" parent="World"]
+position = Vector2(555, 394)
+texture = ExtResource("4_tbgi4")
 
 [node name="Scent" type="Sprite2D" parent="World"]
+position = Vector2(650, 426)
+texture = ExtResource("5_tefeu")
 
 [node name="Hearing" type="Sprite2D" parent="World"]
 
