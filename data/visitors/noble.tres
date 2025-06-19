@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Visitor" load_steps=2 format=3 uid="uid://blx3yr7v8i3tt"]
+
+[ext_resource type="Script" uid="uid://c47on7cf0g7pv" path="res://data/visitors/visitor.gd" id="1_tqja4"]
+
+[resource]
+script = ExtResource("1_tqja4")
+id = "noble"
+true_name = "Veridian Noble"
+profile = 9
+history = ""
+smell_focus = 1.0
+smell_text = "expensive perfumes, clean clothes"
+psychic_focus = 1.0
+psychic_text = "relaxed, confident"
+hearing_focus = 1.0
+hearing_text = "a true Veridan accent spoken in high status circles"
+thermal_focus = 1.0
+thermal_text = "cool and healthy"
+tactile_focus = 1.0
+tactile_text = "regular and healthy gait"
+metadata/_custom_type_script = "uid://c47on7cf0g7pv"

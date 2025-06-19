@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Visitor" load_steps=2 format=3 uid="uid://c41t0o3xf68ho"]
+
+[ext_resource type="Script" uid="uid://c47on7cf0g7pv" path="res://data/visitors/visitor.gd" id="1_7klh8"]
+
+[resource]
+script = ExtResource("1_7klh8")
+id = "smuggler"
+true_name = "Smuggler"
+profile = 11
+history = ""
+smell_focus = 1.0
+smell_text = "unusual and exotic aromas"
+psychic_focus = 2.0
+psychic_text = "fluctuating mood"
+hearing_focus = 1.0
+hearing_text = "common local accent"
+thermal_focus = 2.0
+thermal_text = "alternating between cool and heated"
+tactile_focus = 2.0
+tactile_text = "unusual vibrations when moving"
+metadata/_custom_type_script = "uid://c47on7cf0g7pv"

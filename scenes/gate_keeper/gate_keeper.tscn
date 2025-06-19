@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://fmqnq17byogm"]
+
+[ext_resource type="Texture2D" uid="uid://318mr7ueabam" path="res://assets/graphics/thinker.png" id="1_8m8nn"]
+[ext_resource type="Script" uid="uid://bkaaqsx8x6yy" path="res://scenes/gate_keeper/gate_keeper.gd" id="1_nhfpb"]
+[ext_resource type="PackedScene" uid="uid://bvpr1timpu6d0" path="res://scenes/gate_keeper/senses/senses.tscn" id="3_nhfpb"]
+
+[node name="GateKeeper" type="Node2D" groups=["gate_keeper"]]
+script = ExtResource("1_nhfpb")
+
+[node name="GateKeeperSprite" type="Sprite2D" parent="."]
+position = Vector2(6, 0)
+texture = ExtResource("1_8m8nn")
+centered = false
+
+[node name="Senses" parent="." instance=ExtResource("3_nhfpb")]
+unique_name_in_owner = true
+position = Vector2(126, 43)

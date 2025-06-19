@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Sense" load_steps=3 format=3 uid="uid://203487ar4bad"]
+
+[ext_resource type="Script" uid="uid://xtaxtyfcc6v7" path="res://data/senses/sense.gd" id="1_edchg"]
+[ext_resource type="Texture2D" uid="uid://dsktab8xw3fr0" path="res://assets/graphics/hearing.png" id="2_4n2h4"]
+
+[resource]
+script = ExtResource("1_edchg")
+id = "hearing"
+name = "Hearing"
+description = "Translates sound waves moving through air into neurological signals"
+texture = ExtResource("2_4n2h4")
+metadata/_custom_type_script = "uid://xtaxtyfcc6v7"

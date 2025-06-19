@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Sense" load_steps=3 format=3 uid="uid://c0x48dlv6485f"]
+
+[ext_resource type="Script" uid="uid://xtaxtyfcc6v7" path="res://data/senses/sense.gd" id="1_qg6th"]
+[ext_resource type="Texture2D" uid="uid://j0d4a22f2i0d" path="res://assets/graphics/smell.png" id="2_f1oci"]
+
+[resource]
+script = ExtResource("1_qg6th")
+id = "smell"
+name = "Smell"
+description = "Translates chemical reactions caused by small molecules reaching receptors inside the node into neurological signals"
+texture = ExtResource("2_f1oci")
+metadata/_custom_type_script = "uid://xtaxtyfcc6v7"

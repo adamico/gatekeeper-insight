@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Sense" load_steps=3 format=3 uid="uid://btdt24exb7tdt"]
+
+[ext_resource type="Script" uid="uid://xtaxtyfcc6v7" path="res://data/senses/sense.gd" id="1_t5lxg"]
+[ext_resource type="Texture2D" uid="uid://bwpser1oo74y8" path="res://assets/graphics/psychic.png" id="2_c2uwn"]
+
+[resource]
+script = ExtResource("1_t5lxg")
+id = "psychic"
+name = "Psychic"
+description = "Translates others' brain wave into neurological data"
+texture = ExtResource("2_c2uwn")
+metadata/_custom_type_script = "uid://xtaxtyfcc6v7"

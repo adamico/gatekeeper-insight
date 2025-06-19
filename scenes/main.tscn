@@ -1,224 +1,109 @@
-[gd_scene load_steps=8 format=3 uid="uid://di1gy1dspp8h3"]
+[gd_scene load_steps=6 format=3 uid="uid://di1gy1dspp8h3"]
 
 [ext_resource type="Script" uid="uid://b6ghup2ua3vo" path="res://scripts/main.gd" id="1_jyhfs"]
-[ext_resource type="Texture2D" uid="uid://318mr7ueabam" path="res://assets/graphics/thinker.png" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://cks3qexeltlwe" path="res://assets/graphics/background.png" id="2_sugp2"]
 [ext_resource type="Theme" uid="uid://rcmme2uurlhn" path="res://resources/theme.tres" id="3_tefeu"]
-[ext_resource type="Texture2D" uid="uid://7fim7g216b3u" path="res://assets/graphics/senses.png" id="4_jyhfs"]
-[ext_resource type="Texture2D" uid="uid://c5iw3nl88p88l" path="res://assets/graphics/bodies.png" id="5_tbgi4"]
-[ext_resource type="Theme" uid="uid://cy61b8kvmmaai" path="res://resources/stats_theme.tres" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://fmqnq17byogm" path="res://scenes/gate_keeper/gate_keeper.tscn" id="4_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://c6wyik70sdnrb" path="res://scenes/visitor/visitor_control.tscn" id="5_tbgi4"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_jyhfs")
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.26, 0.26, 0.26, 1)
-position = Vector2(680, 227)
+position = Vector2(680, 226)
 scale = Vector2(0.816666, 0.816667)
 texture = ExtResource("2_sugp2")
 centered = false
 offset = Vector2(-849.797, -356.326)
 metadata/_edit_lock_ = true
 
-[node name="Actions" type="Control" parent="."]
+[node name="UI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
 theme = ExtResource("3_tefeu")
 
-[node name="ActionsContainer" type="HBoxContainer" parent="Actions"]
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
 layout_mode = 1
-anchors_preset = 8
+offset_right = 210.0
+offset_bottom = 104.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+
+[node name="Day" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DayLabel" type="Label" parent="UI/MarginContainer/VBoxContainer/Day"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Day:"
+
+[node name="DayValue" type="Label" parent="UI/MarginContainer/VBoxContainer/Day"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "1"
+
+[node name="Time" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="UI/MarginContainer/VBoxContainer/Time"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Time:"
+
+[node name="TimeValue" type="Label" parent="UI/MarginContainer/VBoxContainer/Time"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "10:00 AM"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 174.0
-offset_top = 68.0
-offset_right = 1066.0
-offset_bottom = 152.0
+offset_left = -332.0
+offset_top = 92.0
+offset_right = 332.0
+offset_bottom = 232.0
 grow_horizontal = 2
-grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Make Your Choice Keeper!"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/VBoxContainer"]
+layout_mode = 2
+
+[node name="ActionsContainer" type="HBoxContainer" parent="UI/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Allow" type="Button" parent="Actions/ActionsContainer"]
+[node name="Allow" type="Button" parent="UI/VBoxContainer/PanelContainer/ActionsContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Allow"
 
-[node name="Deny" type="Button" parent="Actions/ActionsContainer"]
+[node name="Deny" type="Button" parent="UI/VBoxContainer/PanelContainer/ActionsContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Deny"
 
-[node name="Detain" type="Button" parent="Actions/ActionsContainer"]
+[node name="Detain" type="Button" parent="UI/VBoxContainer/PanelContainer/ActionsContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Detain"
 
-[node name="GateKeeper" type="Node2D" parent="."]
-position = Vector2(286, 384)
-metadata/_edit_group_ = true
+[node name="GateKeeper" parent="." instance=ExtResource("4_o6xl0")]
+position = Vector2(166, 430)
 
-[node name="GateKeeperSprite" type="Sprite2D" parent="GateKeeper"]
-position = Vector2(-11, 167)
-texture = ExtResource("2_0wfyh")
-
-[node name="Senses" type="Node2D" parent="GateKeeper"]
-position = Vector2(-6, 28)
-
-[node name="Psychic" type="Sprite2D" parent="GateKeeper/Senses"]
-position = Vector2(0, -85)
-texture = ExtResource("4_jyhfs")
-hframes = 5
-
-[node name="PsychicLabel" type="Label" parent="GateKeeper/Senses/Psychic"]
-offset_left = -46.0
-offset_top = 32.0
-offset_right = 47.0
-offset_bottom = 66.0
-theme = ExtResource("3_tefeu")
-theme_override_font_sizes/font_size = 32
-text = "Psychic"
-
-[node name="Scent" type="Sprite2D" parent="GateKeeper/Senses"]
-position = Vector2(96, -16)
-texture = ExtResource("4_jyhfs")
-hframes = 5
-frame = 1
-
-[node name="ScentLabel" type="Label" parent="GateKeeper/Senses/Scent"]
-offset_left = -35.0
-offset_top = 32.0
-offset_right = 31.0
-offset_bottom = 66.0
-theme = ExtResource("3_tefeu")
-theme_override_font_sizes/font_size = 32
-text = "Scent"
-
-[node name="Hearing" type="Sprite2D" parent="GateKeeper/Senses"]
-position = Vector2(-96, -16)
-texture = ExtResource("4_jyhfs")
-hframes = 5
-frame = 2
-
-[node name="HearingLabel" type="Label" parent="GateKeeper/Senses/Hearing"]
-offset_left = -49.0
-offset_top = 32.0
-offset_right = 49.0
-offset_bottom = 66.0
-theme = ExtResource("3_tefeu")
-theme_override_font_sizes/font_size = 32
-text = "Hearing"
-
-[node name="Thermal" type="Sprite2D" parent="GateKeeper/Senses"]
-position = Vector2(-153, 92)
-texture = ExtResource("4_jyhfs")
-hframes = 5
-frame = 4
-
-[node name="ThermalLabel" type="Label" parent="GateKeeper/Senses/Thermal"]
-offset_left = -51.0
-offset_top = 32.0
-offset_right = 54.0
-offset_bottom = 66.0
-theme = ExtResource("3_tefeu")
-theme_override_font_sizes/font_size = 32
-text = "Thermal"
-metadata/_edit_use_anchors_ = true
-
-[node name="Tactile" type="Sprite2D" parent="GateKeeper/Senses"]
-position = Vector2(141, 92)
-texture = ExtResource("4_jyhfs")
-hframes = 5
-frame = 3
-
-[node name="TactileLabel" type="Label" parent="GateKeeper/Senses/Tactile"]
-offset_left = -44.0
-offset_top = 32.0
-offset_right = 43.0
-offset_bottom = 66.0
-theme = ExtResource("3_tefeu")
-theme_override_font_sizes/font_size = 32
-text = "Tactile"
-metadata/_edit_use_anchors_ = true
-
-[node name="Visitor" type="Node2D" parent="."]
-position = Vector2(791, 441)
-
-[node name="VisitorSprite" type="Sprite2D" parent="Visitor"]
-position = Vector2(181, 74)
-texture = ExtResource("5_tbgi4")
-hframes = 8
-
-[node name="VisitorStatsPanel" type="PanelContainer" parent="Visitor"]
-offset_left = -306.0
-offset_top = -115.0
-offset_right = 101.0
-offset_bottom = 244.0
-theme = ExtResource("7_o6xl0")
-
-[node name="MarginContainer" type="MarginContainer" parent="Visitor/VisitorStatsPanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-
-[node name="VisitorStats" type="VBoxContainer" parent="Visitor/VisitorStatsPanel/MarginContainer"]
-layout_mode = 2
-
-[node name="Psyche" type="HBoxContainer" parent="Visitor/VisitorStatsPanel/MarginContainer/VisitorStats"]
-layout_mode = 2
-
-[node name="PsycheLabel" type="Label" parent="Visitor/VisitorStatsPanel/MarginContainer/VisitorStats/Psyche"]
-layout_mode = 2
-text = "Psyche:"
-
-[node name="PsycheValue" type="Label" parent="Visitor/VisitorStatsPanel/MarginContainer/VisitorStats/Psyche"]
-layout_mode = 2
-text = "calm, content"
-
-[node name="Scent" type="HBoxContainer" parent="Visitor/VisitorStatsPanel/MarginContainer/VisitorStats"]
-layout_mode = 2
-
-[node name="ScentLabel" type="Label" parent="Visitor/VisitorStatsPanel/MarginContainer/VisitorStats/Scent"]
-layout_mode = 2
-text = "Scent:"
-
-[node name="Scent" type="Label" parent="Visitor/VisitorStatsPanel/MarginContainer/VisitorStats/Scent"]
-layout_mode = 2
-text = "city aromas"
-
-[node name="Tactile" type="HBoxContainer" parent="Visitor/VisitorStatsPanel/MarginContainer/VisitorStats"]
-layout_mode = 2
-
-[node name="TactileLabel" type="Label" parent="Visitor/VisitorStatsPanel/MarginContainer/VisitorStats/Tactile"]
-layout_mode = 2
-text = "Tactile:"
-
-[node name="Tactile" type="Label" parent="Visitor/VisitorStatsPanel/MarginContainer/VisitorStats/Tactile"]
-layout_mode = 2
-text = "regular, confident"
-
-[node name="Thermal" type="HBoxContainer" parent="Visitor/VisitorStatsPanel/MarginContainer/VisitorStats"]
-layout_mode = 2
-
-[node name="ThermalLabel" type="Label" parent="Visitor/VisitorStatsPanel/MarginContainer/VisitorStats/Thermal"]
-layout_mode = 2
-text = "Temperature:"
-
-[node name="Thermal" type="Label" parent="Visitor/VisitorStatsPanel/MarginContainer/VisitorStats/Thermal"]
-layout_mode = 2
-text = "stable"
-
-[node name="Sound" type="HBoxContainer" parent="Visitor/VisitorStatsPanel/MarginContainer/VisitorStats"]
-layout_mode = 2
-
-[node name="SoundLabel" type="Label" parent="Visitor/VisitorStatsPanel/MarginContainer/VisitorStats/Sound"]
-layout_mode = 2
-text = "Sound:"
-
-[node name="Sound" type="Label" parent="Visitor/VisitorStatsPanel/MarginContainer/VisitorStats/Sound"]
-layout_mode = 2
-text = "familiar accent"
+[node name="Visitor" parent="." instance=ExtResource("5_tbgi4")]

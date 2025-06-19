@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Visitor" load_steps=2 format=3 uid="uid://bnet4gxxt4j3p"]
+
+[ext_resource type="Script" uid="uid://c47on7cf0g7pv" path="res://data/visitors/visitor.gd" id="1_pmekw"]
+
+[resource]
+script = ExtResource("1_pmekw")
+id = "citizen"
+true_name = "Veridian Citizen"
+profile = 2
+history = ""
+smell_focus = 0.0
+smell_text = "familiar city aromas"
+psychic_focus = 1.0
+psychic_text = "calm and content aura"
+hearing_focus = 0.0
+hearing_text = "a true Veridian accent"
+thermal_focus = 1.0
+thermal_text = "stable and healthy body heat"
+tactile_focus = 1.0
+tactile_text = "regular and confident gait"
+metadata/_custom_type_script = "uid://c47on7cf0g7pv"

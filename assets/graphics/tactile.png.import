@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j0d4a22f2i0d"
-path="res://.godot/imported/smell.png-65ed6e50587459ca1ebc7791afab0c86.ctex"
+uid="uid://dmp61imnoalh0"
+path="res://.godot/imported/tactile.png-1ffd9dcfda894ba187b2ea8541ecd184.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/smell.png"
-dest_files=["res://.godot/imported/smell.png-65ed6e50587459ca1ebc7791afab0c86.ctex"]
+source_file="res://assets/graphics/tactile.png"
+dest_files=["res://.godot/imported/tactile.png-1ffd9dcfda894ba187b2ea8541ecd184.ctex"]
 
 [params]
 

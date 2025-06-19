@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Sense" load_steps=3 format=3 uid="uid://cwkb60xm8nsd4"]
+
+[ext_resource type="Script" uid="uid://xtaxtyfcc6v7" path="res://data/senses/sense.gd" id="1_idxuq"]
+[ext_resource type="Texture2D" uid="uid://pc5x03la6au7" path="res://assets/graphics/thermal.png" id="2_tul07"]
+
+[resource]
+script = ExtResource("1_idxuq")
+id = "thermal"
+name = "Thermal"
+description = "Translates heat waves emitted by visitors into neurological signals"
+texture = ExtResource("2_tul07")
+metadata/_custom_type_script = "uid://xtaxtyfcc6v7"

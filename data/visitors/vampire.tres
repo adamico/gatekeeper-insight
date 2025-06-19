@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="Visitor" load_steps=2 format=3 uid="uid://nuoyja05sbss"]
+
+[ext_resource type="Script" uid="uid://c47on7cf0g7pv" path="res://data/visitors/visitor.gd" id="1_5aru5"]
+
+[resource]
+script = ExtResource("1_5aru5")
+id = "vampire"
+true_name = "Vlad IV"
+profile = 16
+history = ""
+smell_details = Dictionary[int, String]({
+0: "subtle absence of typical body odors",
+1: "a faint odor of wood and and ancient dirt",
+2: "a very faint mixed smell of iron and a sweet sickly aroma",
+3: "the chilling scent of undeath"
+})
+psychic_details = Dictionary[int, String]({
+0: "a faint sense of emotional detachment",
+1: "a deep and ancient inner stability",
+2: "an unsettling urge of predation or unsatisfied hunger",
+3: "a cold, relentless will to dominate and suck the living essence"
+})
+hearing_details = Dictionary[int, String]({
+0: "lack of typical human background sounds",
+1: "unusually quiet, almost no physiological sounds",
+2: "no heartbeat, no breathing",
+3: "a very high frequency hum of unnatural energy"
+})
+thermal_details = Dictionary[int, String]({
+0: "body temperature is subtly off, not warm enough",
+1: "uniform cool temperature across their entire body",
+2: "an unnatural cold aura radiating from their body",
+3: "a chilling void very like death itself"
+})
+tactile_details = Dictionary[int, String]({
+0: "their gait feels unusually smooth",
+1: "absence of subtle body tremors and internal vibrations",
+2: "internal density of unliving tissue",
+3: "the stillness of death animates this unearthly being"
+})
+smell_focus = 3.0
+smell_text = ""
+psychic_focus = 4.0
+psychic_text = "hard to detect thoughts of hunger and death"
+hearing_focus = 2.0
+hearing_text = "very light gait, does he really walks?"
+thermal_focus = 0.0
+thermal_text = "cold as death"
+tactile_focus = 0.0
+tactile_text = "the terrain is silent"
+metadata/_custom_type_script = "uid://c47on7cf0g7pv"

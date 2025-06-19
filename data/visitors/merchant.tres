@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Visitor" load_steps=2 format=3 uid="uid://crrtsr6e8aagw"]
+
+[ext_resource type="Script" uid="uid://c47on7cf0g7pv" path="res://data/visitors/visitor.gd" id="1_oabjc"]
+
+[resource]
+script = ExtResource("1_oabjc")
+id = "merchant"
+true_name = "Traveling Merchant"
+profile = 8
+history = ""
+smell_focus = 1.0
+smell_text = "exotic spices, foreign leather, road dust"
+psychic_focus = 1.0
+psychic_text = "slightly anxious"
+hearing_focus = 0.0
+hearing_text = "a noticeable foreign accent"
+thermal_focus = 1.0
+thermal_text = "slightly elevated"
+tactile_focus = 0.0
+tactile_text = "heavy footsteps and creaks of a wagon"
+metadata/_custom_type_script = "uid://c47on7cf0g7pv"

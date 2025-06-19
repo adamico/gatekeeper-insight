@@ -1,0 +1,119 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6wyik70sdnrb"]
+
+[ext_resource type="Theme" uid="uid://rcmme2uurlhn" path="res://resources/theme.tres" id="1_8qud0"]
+[ext_resource type="Script" uid="uid://c6761oci6gn3h" path="res://scenes/visitor/visitor_control.gd" id="1_hbot8"]
+[ext_resource type="LabelSettings" uid="uid://byss7w7gmcpt" path="res://resources/stats_bold_label.tres" id="2_hbot8"]
+[ext_resource type="Texture2D" uid="uid://elwnoej8i5lx" path="res://assets/graphics/body1.png" id="3_gypop"]
+[ext_resource type="Theme" uid="uid://cy61b8kvmmaai" path="res://resources/stats_theme.tres" id="4_u58bb"]
+
+[node name="VisitorControl" type="Control" groups=["visitor"]]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+script = ExtResource("1_hbot8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ProfilePanel" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_8qud0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ProfilePanel"]
+layout_mode = 2
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/ProfilePanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Visitor Name"
+label_settings = ExtResource("2_hbot8")
+horizontal_alignment = 1
+
+[node name="ProfileLabel" type="Label" parent="HBoxContainer/ProfilePanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Visitor Profile"
+label_settings = ExtResource("2_hbot8")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ProfilePanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_gypop")
+
+[node name="StatsPanel" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_u58bb")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/StatsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+
+[node name="Stats" type="VBoxContainer" parent="HBoxContainer/StatsPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Psyche" type="HBoxContainer" parent="HBoxContainer/StatsPanel/MarginContainer/Stats"]
+layout_mode = 2
+
+[node name="PsycheLabel" type="Label" parent="HBoxContainer/StatsPanel/MarginContainer/Stats/Psyche"]
+layout_mode = 2
+text = "Psyche:"
+label_settings = ExtResource("2_hbot8")
+
+[node name="PsycheValue" type="Label" parent="HBoxContainer/StatsPanel/MarginContainer/Stats/Psyche"]
+layout_mode = 2
+text = "calm, content"
+
+[node name="Scent" type="HBoxContainer" parent="HBoxContainer/StatsPanel/MarginContainer/Stats"]
+layout_mode = 2
+
+[node name="ScentLabel" type="Label" parent="HBoxContainer/StatsPanel/MarginContainer/Stats/Scent"]
+layout_mode = 2
+text = "Scent:"
+label_settings = ExtResource("2_hbot8")
+
+[node name="Scent" type="Label" parent="HBoxContainer/StatsPanel/MarginContainer/Stats/Scent"]
+layout_mode = 2
+text = "city aromas"
+
+[node name="Tactile" type="HBoxContainer" parent="HBoxContainer/StatsPanel/MarginContainer/Stats"]
+layout_mode = 2
+
+[node name="TactileLabel" type="Label" parent="HBoxContainer/StatsPanel/MarginContainer/Stats/Tactile"]
+layout_mode = 2
+text = "Tactile:"
+label_settings = ExtResource("2_hbot8")
+
+[node name="Tactile" type="Label" parent="HBoxContainer/StatsPanel/MarginContainer/Stats/Tactile"]
+layout_mode = 2
+text = "regular, confident"
+
+[node name="Thermal" type="HBoxContainer" parent="HBoxContainer/StatsPanel/MarginContainer/Stats"]
+layout_mode = 2
+
+[node name="ThermalLabel" type="Label" parent="HBoxContainer/StatsPanel/MarginContainer/Stats/Thermal"]
+layout_mode = 2
+text = "Temperature:"
+label_settings = ExtResource("2_hbot8")
+
+[node name="Thermal" type="Label" parent="HBoxContainer/StatsPanel/MarginContainer/Stats/Thermal"]
+layout_mode = 2
+text = "stable"
+
+[node name="Sound" type="HBoxContainer" parent="HBoxContainer/StatsPanel/MarginContainer/Stats"]
+layout_mode = 2
+
+[node name="SoundLabel" type="Label" parent="HBoxContainer/StatsPanel/MarginContainer/Stats/Sound"]
+layout_mode = 2
+text = "Sound:"
+label_settings = ExtResource("2_hbot8")
+
+[node name="Sound" type="Label" parent="HBoxContainer/StatsPanel/MarginContainer/Stats/Sound"]
+layout_mode = 2
+text = "familiar accent"
