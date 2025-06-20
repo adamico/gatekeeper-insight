@@ -3,8 +3,7 @@
 # It includes properties such as id, true_name, profile, and history.
 # It also includes senses focus values and their corresponding text descriptions.
 # The Visitor can generate a random name, select a random body texture, and generate a history
-class_name Visitor
-extends Resource
+class_name Visitor extends Resource
 
 const BODY1: Texture2D = preload("res://assets/graphics/body1.png")
 const BODY2: Texture2D = preload("res://assets/graphics/body2.png")
@@ -47,63 +46,28 @@ enum Profile {
     WITCH,
 }
 
+enum ProfileType {
+    SAFE,
+    DANGEROUS,
+    UNKNOWN,
+}
+
+
 @export var id: String
-@export var true_name: String
+@export var true_names: Array[String]
 @export var profile: Profile
 @export_multiline var history: String
 
 # Senses focus values
 # These values represent the focus ranks needed for each sense to gather information.
 @export_category("Senses focus ranks and information obtained")
-@export var smell_details: Dictionary[int, String] = {
-    0: "",
-    1: "",
-    2: "",
-    3: "",
-    4: "",
-}
-@export var psychic_details: Dictionary[int, String] = {
-    0: "",
-    1: "",
-    2: "",
-    3: "",
-    4: "",
-}
-@export var hearing_details: Dictionary[int, String] = {
-    0: "",
-    1: "",
-    2: "",
-    3: "",
-    4: "",
-}
-@export var thermal_details: Dictionary[int, String] = {
-    0: "",
-    1: "",
-    2: "",
-    3: "",
-    4: "",
-}
-@export var tactile_details: Dictionary[int, String] = {
-    0: "",
-    1: "",
-    2: "",
-    3: "",
-    4: "",
-}
-
-@export var smell_focus: float = 0.0
-@export var smell_text: String
-@export var psychic_focus: float = 0.0
-@export var psychic_text: String
-@export var hearing_focus: float = 0.0
-@export var hearing_text: String
-@export var thermal_focus: float = 0.0
-@export var thermal_text: String
-@export var tactile_focus: float = 0.0
-@export var tactile_text: String
+@export var psyche : Array[String]
+@export var scent : Array[String]
+@export var sound : Array[String]
+@export var temperature : Array[String]
+@export var tactile : Array[String]
 
 var name: String
-var profile_name: String : set = _set_profile_name
 var texture: Texture2D
 
 
@@ -115,8 +79,37 @@ func _init() -> void:
     _generate_history()
 
 
-func _set_profile_name(value: String) -> void:
-    profile_name = value
+func get_stats() -> Dictionary[String, Array]:
+    # Return a dictionary of stats for the visitor
+    return {
+        "psychic": psyche,
+        "smell": scent,
+        "hearing": sound,
+        "thermal": temperature,
+        "tactile": tactile
+    }
+
+
+func get_true_name() -> String:
+    return true_names.pick_random()
+
+
+func get_profile_type() -> ProfileType:
+    var profile_type: ProfileType
+    match profile:
+        Profile.ANGEL, Profile.CITIZEN, Profile.TOURIST, Profile.TRAVELING_MERCHANT,\
+        Profile.NOBLE, Profile.FARMER, Profile.GUARD, Profile.MERCHANT:
+            profile_type = ProfileType.SAFE
+        Profile.ASSASSIN, Profile.CONSTRUCT, Profile.CULTIST, Profile.DEMON, Profile.SHIFTER,\
+        Profile.SMUGGLER, Profile.SPY, Profile.VAGRANT, Profile.VAMPIRE, Profile.WEREWOLF, Profile.WITCH:
+            profile_type = ProfileType.DANGEROUS
+        _:
+            profile_type = ProfileType.UNKNOWN
+    return profile_type
+
+
+func get_profile_name() -> String:
+    var profile_name: String
     match profile:
         Profile.ANGEL:
             profile_name = "Angel"
@@ -149,7 +142,9 @@ func _set_profile_name(value: String) -> void:
         Profile.WITCH:
             profile_name = "Witch"
         _:
-            profile_name = "?Unknown?"
+            profile_name = "???"
+        
+    return profile_name
 
 
 func _generate_history() -> void:

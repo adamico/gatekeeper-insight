@@ -1,10 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://di1gy1dspp8h3"]
+[gd_scene load_steps=9 format=3 uid="uid://di1gy1dspp8h3"]
 
 [ext_resource type="Script" uid="uid://b6ghup2ua3vo" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://cks3qexeltlwe" path="res://assets/graphics/background.png" id="2_sugp2"]
 [ext_resource type="Theme" uid="uid://rcmme2uurlhn" path="res://resources/theme.tres" id="3_tefeu"]
 [ext_resource type="PackedScene" uid="uid://fmqnq17byogm" path="res://scenes/gate_keeper/gate_keeper.tscn" id="4_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://c6wyik70sdnrb" path="res://scenes/visitor/visitor_control.tscn" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://cgbownqpc1qx0" path="res://data/gate_keeper/gate_keeper_stats.gd" id="5_tefeu"]
+[ext_resource type="Resource" uid="uid://nuoyja05sbss" path="res://data/visitors/vampire.tres" id="7_o6xl0"]
+
+[sub_resource type="Resource" id="Resource_o6xl0"]
+script = ExtResource("5_tefeu")
+known_profiles = Array[String]([])
+senses_focus_ranks = {
+"hearing": 0,
+"psychic": 0,
+"smell": 0,
+"tactile": 0,
+"thermal": 0
+}
+metadata/_custom_type_script = "uid://cgbownqpc1qx0"
 
 [node name="Main" type="Node"]
 script = ExtResource("1_jyhfs")
@@ -105,5 +119,11 @@ text = "Detain"
 
 [node name="GateKeeper" parent="." instance=ExtResource("4_o6xl0")]
 position = Vector2(166, 430)
+gate_keeper_stats = SubResource("Resource_o6xl0")
 
 [node name="Visitor" parent="." instance=ExtResource("5_tbgi4")]
+offset_left = 555.0
+offset_top = 269.0
+offset_right = 555.0
+offset_bottom = 269.0
+visitor = ExtResource("7_o6xl0")

@@ -1,18 +1,15 @@
 @tool
-
-class_name SenseControl
-extends Control
+class_name SenseControl extends Control
 
 
 @export var sense: Sense : set = _set_sense
 
-@onready var button: Button = $VBoxContainer/Button
-@onready var label: Label = $VBoxContainer/Label
+@onready var button: Button = %Button
+@onready var label: Label = %Label
 
 
-func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		use()
+func _ready() -> void:
+	button.pressed.connect(use)
 
 
 func use() -> void:

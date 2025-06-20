@@ -1,5 +1,4 @@
-class_name  Senses
-extends Node2D
+class_name  Senses extends Node2D
 
 
 @onready var sense_choice_confirm = %SenseChoiceConfirm
@@ -7,6 +6,5 @@ extends Node2D
 
 func _ready() -> void:
 	sense_choice_confirm.hide()
-
 	# Initialize the senses
 	print("Senses are ready.")

@@ -2,10 +2,18 @@
 # This script defines a resource that manages the gatekeeper's known visitor profiles.
 # It allows adding profiles and checking if a profile is known.
 # It is used by the GateKeeper to manage visitor profiles efficiently.
-class_name GateKeeperStats
-extends Resource
+class_name GateKeeperStats extends Resource
 
 @export var known_profiles: Array[String] = []
+@export var senses_focus_ranks: Dictionary = {
+    "psychic": 0,
+    "smell": 0,
+    "hearing": 0,
+    "thermal": 0,
+    "tactile": 0,
+}
+
+var _max_focus_rank:= 3
 
 
 ## Add a profile to the gate keeper's known profiles
@@ -23,3 +31,27 @@ func add_visitor_profile(profile_name: String) -> void:
 ## @return: True if the profile is known, False otherwise
 func is_profile_known(profile_name: String) -> bool:
     return known_profiles.has(profile_name)
+
+
+func get_focus_rank(sense_name: String) -> int:
+    return senses_focus_ranks[sense_name] if senses_focus_ranks.has(sense_name) else 0
+
+
+func update_focus_rank(sense_name: String) -> void:
+    print ("[GateKeeperStats]Try increasing focus rank for sense '%s' from %2.1f to %2.1f"\
+        % [sense_name, senses_focus_ranks[sense_name], senses_focus_ranks[sense_name] + 1])
+    
+    # ensure the sense name is valid
+    if not senses_focus_ranks.keys().has(sense_name):
+        print("[GateKeeperStats]Invalid sense name: '%s'" % sense_name)
+        return
+
+    # ensure the focus rank is not already at the maximum
+    if senses_focus_ranks[sense_name] >= _max_focus_rank:
+        print("[GateKeeperStats]Focus rank for sense '%s' is already at maximum (%2.1f)" % [sense_name, _max_focus_rank])
+        return
+    
+    # increase the focus rank for the sense
+    senses_focus_ranks[sense_name] += 1
+
+    print("[GateKeeperStats]Focus rank for sense '%s' increased to %2.1f" % [sense_name, senses_focus_ranks[sense_name]])
