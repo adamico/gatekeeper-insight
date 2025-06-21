@@ -25,10 +25,13 @@ func _on_sense_used(_sense_id: String) -> void:
 
 
 func _on_sense_button_pressed(sense_control: Node) -> void:
+	var sense_choice_confirm_parent = sense_choice_confirm.get_parent()
+	if sense_choice_confirm_parent:
+		# If the confirm node is already in the scene, remove it first
+		sense_choice_confirm_parent.remove_child(sense_choice_confirm)
 	sense_choice_confirm.sense = sense_control.sense
 	sense_control.add_child(sense_choice_confirm)
 	sense_choice_confirm.show()
-	_disable_other_senses(sense_control)
 
 
 func _on_sense_cancel_pressed() -> void:
@@ -38,29 +41,3 @@ func _on_sense_cancel_pressed() -> void:
 func _reset_senses_nodes() -> void:
 	sense_choice_confirm.get_parent().remove_child(sense_choice_confirm)
 	sense_choice_confirm.hide()
-	_enable_senses()
-
-
-func _disable_other_senses(sense_control: Node) -> void:
-	for sense_node : Node in get_tree().get_nodes_in_group("senses"):
-		if sense_node is not SenseControl:
-			continue
-
-		if sense_node == sense_control:
-			continue
-
-		sense_node.button.disabled = true
-		sense_node.button.pressed.disconnect(sense_node.on_button_pressed)
-
-
-func _enable_senses() -> void:
-	for sense_node in get_tree().get_nodes_in_group("senses"):
-		if sense_node is not SenseControl:
-			continue
-
-		sense_node.button.disabled = false
-
-		if sense_node.button.pressed.is_connected(sense_node.on_button_pressed):
-			continue
-
-		sense_node.button.pressed.connect(sense_node.on_button_pressed)

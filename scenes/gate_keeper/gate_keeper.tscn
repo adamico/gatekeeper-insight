@@ -28,4 +28,7 @@ centered = false
 
 [node name="Senses" parent="." instance=ExtResource("3_nhfpb")]
 unique_name_in_owner = true
-position = Vector2(126, 43)
+offset_left = 126.0
+offset_top = 43.0
+offset_right = 126.0
+offset_bottom = 43.0

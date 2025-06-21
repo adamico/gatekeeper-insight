@@ -6,7 +6,7 @@ class_name GateKeeper extends Node2D
 
 @export var gate_keeper_stats: GateKeeperStats
 
-@onready var senses: Node2D = %Senses
+@onready var senses: Node = %Senses
 
 
 func _ready() -> void:

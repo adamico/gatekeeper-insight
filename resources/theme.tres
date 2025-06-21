@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://rcmme2uurlhn"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://rcmme2uurlhn"]
 
 [ext_resource type="FontFile" uid="uid://b3wwca5vu7ull" path="res://assets/fonts/EvilEmpire-lx5R0.ttf" id="1_d4nwg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4nwg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4nwg"]
 bg_color = Color(0.09, 0.0582, 0.0423, 1)
@@ -10,6 +12,6 @@ anti_aliasing = false
 
 [resource]
 default_font = ExtResource("1_d4nwg")
-default_font_size = 64
+Button/styles/disabled = SubResource("StyleBoxEmpty_d4nwg")
 Button/styles/hover = SubResource("StyleBoxFlat_d4nwg")
 Button/styles/normal = SubResource("StyleBoxEmpty_7ct1h")
