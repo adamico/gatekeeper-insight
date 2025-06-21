@@ -21,6 +21,8 @@ var visitor: Node
 
 func _ready() -> void:
 	_start()
+	EventBus.visitor_admitted.connect(_new_visitor.unbind(1))
+	EventBus.visitor_denied.connect(_new_visitor.unbind(1))
 	print("Main scene is ready.")
 
 

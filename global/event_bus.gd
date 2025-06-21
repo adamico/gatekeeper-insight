@@ -9,8 +9,8 @@ signal sense_button_pressed(sense_control: Node)
 signal sense_choice_cancel
 
 # VisitorStats-related events
-signal visitor_admitted(visitor: Node)
-signal visitor_denied(visitor: Node)
+signal visitor_admitted(visitor_stats: VisitorStats)
+signal visitor_denied(visitor_stats: VisitorStats)
 
 
 const SENSE_CHOIX_CONFIRM = preload("res://scenes/gate_keeper/senses/sense_choice_confirm.tscn")
@@ -44,12 +44,12 @@ func _on_sense_cancel_pressed() -> void:
 	_reset_senses_nodes()
 
 
-func _on_visitor_admitted(visitor: Node) -> void:
-	print("VisitorStats admitted: %s" % visitor.name)
+func _on_visitor_admitted(visitor_stats: VisitorStats) -> void:
+	print("Visitor admitted: %s" % visitor_stats.name)
 
 
-func _on_visitor_denied(visitor: Node) -> void:
-	print("VisitorStats denied: %s" % visitor.name)
+func _on_visitor_denied(visitor_stats: VisitorStats) -> void:
+	print("Visitor denied: %s" % visitor_stats.name)
 
 # Resets the sense choice confirm node by removing it from its parent and hiding it.
 func _reset_senses_nodes() -> void:

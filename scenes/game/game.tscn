@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://di1gy1dspp8h3"]
+[gd_scene load_steps=5 format=3 uid="uid://di1gy1dspp8h3"]
 
 [ext_resource type="Script" uid="uid://b6ghup2ua3vo" path="res://scenes/game/game.gd" id="1_7h61r"]
 [ext_resource type="Texture2D" uid="uid://cks3qexeltlwe" path="res://assets/graphics/background.png" id="2_0sr1o"]
 [ext_resource type="Resource" uid="uid://c2lntgk4apep6" path="res://data/gate_keeper/gate_keeper_stats.tres" id="2_kelw5"]
+[ext_resource type="PackedScene" uid="uid://up3hr1q430lv" path="res://scenes/ui/ui.tscn" id="4_kelw5"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_7h61r")
@@ -16,6 +17,9 @@ texture = ExtResource("2_0sr1o")
 centered = false
 offset = Vector2(-849.797, -356.326)
 metadata/_edit_lock_ = true
+
+[node name="UI" parent="." instance=ExtResource("4_kelw5")]
+custom_minimum_size = Vector2(0, 200)
 
 [node name="GateKeeperPosition" type="Marker2D" parent="."]
 unique_name_in_owner = true

@@ -13,6 +13,8 @@ var gate_keeper: GateKeeper
 func _ready() -> void:
 	gate_keeper = get_tree().get_first_node_in_group("gate_keeper")
 	EventBus.sense_used.connect(_update_single_stat_ui)
+	EventBus.visitor_admitted.connect(queue_free.unbind(1))
+	EventBus.visitor_denied.connect(queue_free.unbind(1))
 
 
 func _set_visitor_stats(value: VisitorStats) -> void:
