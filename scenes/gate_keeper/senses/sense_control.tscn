@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr1aaoeucq3sg"]
+[gd_scene load_steps=4 format=3 uid="uid://cr1aaoeucq3sg"]
 
 [ext_resource type="Script" uid="uid://ct87tdsatgl5j" path="res://scenes/gate_keeper/senses/sense_control.gd" id="1_3c4hl"]
+[ext_resource type="Theme" uid="uid://rcmme2uurlhn" path="res://resources/theme.tres" id="1_p5sxv"]
 [ext_resource type="Texture2D" uid="uid://dsktab8xw3fr0" path="res://assets/graphics/hearing.png" id="2_p5sxv"]
 
 [node name="SenseControl" type="Control"]
+custom_minimum_size = Vector2(0, 160)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("1_p5sxv")
 script = ExtResource("1_3c4hl")
 metadata/_custom_type_script = "uid://ct87tdsatgl5j"
 
@@ -21,6 +24,35 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="FocusIncrease" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+
+[node name="FocusValue" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="FocusDecrease" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "-"
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
@@ -36,3 +68,4 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "THERMAL"
 horizontal_alignment = 1
+vertical_alignment = 1
