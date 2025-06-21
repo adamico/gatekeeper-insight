@@ -8,10 +8,10 @@ signal sense_used(sense_id: String)
 signal sense_button_pressed(sense_control: Node)
 signal sense_choice_cancel
 
-
 const SENSE_CHOIX_CONFIRM = preload("res://scenes/gate_keeper/senses/sense_choice_confirm.tscn")
 
 var sense_choice_confirm : Node
+
 
 func _ready() -> void:
 	sense_used.connect(_on_sense_used)
@@ -43,16 +43,24 @@ func _reset_senses_nodes() -> void:
 
 func _disable_other_senses(sense_control: Node) -> void:
 	for sense_node : Node in get_tree().get_nodes_in_group("senses"):
-		if sense_node != sense_control and sense_node is SenseControl:
-			sense_node.button.disabled = true
-			sense_node.button.pressed.disconnect(sense_node.on_button_pressed)
-		else:
-			sense_node.button.disabled = false
+		if sense_node is not SenseControl:
+			continue
+
+		if sense_node == sense_control:
+			continue
+
+		sense_node.button.disabled = true
+		sense_node.button.pressed.disconnect(sense_node.on_button_pressed)
 
 
 func _enable_senses() -> void:
 	for sense_node in get_tree().get_nodes_in_group("senses"):
-		if sense_node is SenseControl:
-			sense_node.button.disabled = false
-			if not sense_node.button.pressed.is_connected(sense_node.on_button_pressed):
-				sense_node.button.pressed.connect(sense_node.on_button_pressed)
+		if sense_node is not SenseControl:
+			continue
+
+		sense_node.button.disabled = false
+
+		if sense_node.button.pressed.is_connected(sense_node.on_button_pressed):
+			continue
+
+		sense_node.button.pressed.connect(sense_node.on_button_pressed)
