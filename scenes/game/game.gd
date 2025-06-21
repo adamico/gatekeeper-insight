@@ -1,5 +1,7 @@
 class_name Main extends Node
 
+const UI = preload("res://scenes/ui/ui.tscn")
+
 const GATE_KEEPER = preload("res://scenes/gate_keeper/gate_keeper.tscn")
 const VISITOR = preload("res://scenes/visitor/visitor.tscn")
 const VISITOR_STATS: Array[VisitorStats] = [
@@ -29,6 +31,13 @@ func _ready() -> void:
 func _start() -> void:
 	_initialize_gate_keeper()
 	_new_visitor()
+	_attach_ui()
+
+
+func _attach_ui() -> void:
+	var ui = UI.instantiate()
+	add_child(ui)
+	print("UI attached to the main scene.")
 
 
 func _initialize_gate_keeper() -> void:

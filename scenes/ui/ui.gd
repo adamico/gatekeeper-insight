@@ -8,7 +8,6 @@ var visitor: Node
 
 
 func _ready() -> void:
-	gate_keeper = get_tree().get_first_node_in_group("gate_keeper")
 	allow.pressed.connect(_on_admit_pressed)
 	deny.pressed.connect(_on_deny_pressed)
 
