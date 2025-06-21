@@ -33,25 +33,25 @@ func is_profile_known(profile_name: String) -> bool:
     return known_profiles.has(profile_name)
 
 
-func get_focus_rank(sense_name: String) -> int:
-    return senses_focus_ranks[sense_name] if senses_focus_ranks.has(sense_name) else 0
+func get_focus_rank(sense_id: String) -> int:
+    return senses_focus_ranks[sense_id] if senses_focus_ranks.has(sense_id) else 0
 
 
-func update_focus_rank(sense_name: String) -> void:
+func update_focus_rank(sense_id: String) -> void:
     print ("[GateKeeperStats]Try increasing focus rank for sense '%s' from %2.1f to %2.1f"\
-        % [sense_name, senses_focus_ranks[sense_name], senses_focus_ranks[sense_name] + 1])
+        % [sense_id, senses_focus_ranks[sense_id], senses_focus_ranks[sense_id] + 1])
     
     # ensure the sense name is valid
-    if not senses_focus_ranks.keys().has(sense_name):
-        print("[GateKeeperStats]Invalid sense name: '%s'" % sense_name)
+    if not senses_focus_ranks.keys().has(sense_id):
+        print("[GateKeeperStats]Invalid sense name: '%s'" % sense_id)
         return
 
     # ensure the focus rank is not already at the maximum
-    if senses_focus_ranks[sense_name] >= _max_focus_rank:
-        print("[GateKeeperStats]Focus rank for sense '%s' is already at maximum (%2.1f)" % [sense_name, _max_focus_rank])
+    if senses_focus_ranks[sense_id] >= _max_focus_rank:
+        print("[GateKeeperStats]Focus rank for sense '%s' is already at maximum (%2.1f)" % [sense_id, _max_focus_rank])
         return
     
     # increase the focus rank for the sense
-    senses_focus_ranks[sense_name] += 1
+    senses_focus_ranks[sense_id] += 1
 
-    print("[GateKeeperStats]Focus rank for sense '%s' increased to %2.1f" % [sense_name, senses_focus_ranks[sense_name]])
+    print("[GateKeeperStats]Focus rank for sense '%s' increased to %2.1f" % [sense_id, senses_focus_ranks[sense_id]])

@@ -56,9 +56,9 @@ func _update_stats_ui() -> void:
 	senses_stats.keys().map(_update_single_stat_ui)
 
 
-func _update_single_stat_ui(sense_name: String) -> void:
-	var sense_value_label: Label = get_node("%%%s" % sense_name.capitalize())
-	var focus_rank: int = gate_keeper.get_focus_rank(sense_name)
+func _update_single_stat_ui(sense_id: String) -> void:
+	var sense_value_label: Label = get_node("%%%s" % sense_id.capitalize())
+	var focus_rank: int = gate_keeper.get_focus_rank(sense_id)
 
 	if not sense_value_label:
 		return
@@ -67,9 +67,9 @@ func _update_single_stat_ui(sense_name: String) -> void:
 	for i in range(focus_rank + 1):
 		# Get the sense value based on the focus rank
 		# if the focus rank exceeds the available stats don't append anything
-		if i >= senses_stats[sense_name].size():
+		if i >= senses_stats[sense_id].size():
 			break
-		var sense_text: String = str(senses_stats[sense_name][i])
+		var sense_text: String = str(senses_stats[sense_id][i])
 		sense_text_fragments.append(sense_text)
 
 	sense_value_label.text = ", ".join(sense_text_fragments)

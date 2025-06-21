@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://rcmme2uurlhn" path="res://resources/theme.tres" id="2_inbuo"]
 [ext_resource type="Texture2D" uid="uid://dsktab8xw3fr0" path="res://assets/graphics/hearing.png" id="2_p5sxv"]
 
-[node name="SenseControl" type="Control"]
+[node name="SenseControl" type="Control" groups=["senses"]]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

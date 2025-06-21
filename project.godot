@@ -34,6 +34,7 @@ window/stretch/mode="canvas_items"
 colored_tilemap=""
 gate_keeper=""
 visitor=""
+senses=""
 
 [input]
 

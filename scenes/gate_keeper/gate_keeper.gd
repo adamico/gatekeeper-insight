@@ -27,11 +27,11 @@ func is_profile_known(profile_name: String) -> bool:
 	return gate_keeper_stats.is_profile_known(profile_name)
 
 
-func get_focus_rank(sense_name: String) -> int:
+func get_focus_rank(sense_id: String) -> int:
 	# delegate the focus rank retrieval to the gate_keeper's stats
-	return gate_keeper_stats.get_focus_rank(sense_name)
+	return gate_keeper_stats.get_focus_rank(sense_id)
 
 
-func _on_sense_used(sense_name: String) -> void:
-	print("[GateKeeper]Sense used: %s" % sense_name)
-	gate_keeper_stats.update_focus_rank(sense_name)
+func _on_sense_used(sense_id: String) -> void:
+	print("[GateKeeper]Sense used: %s" % sense_id)
+	gate_keeper_stats.update_focus_rank(sense_id)

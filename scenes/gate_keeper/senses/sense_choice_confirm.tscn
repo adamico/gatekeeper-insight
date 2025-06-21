@@ -1,17 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://byjlrqwdpiq7s"]
+[gd_scene load_steps=3 format=3 uid="uid://byjlrqwdpiq7s"]
+
+[ext_resource type="Script" uid="uid://cxgbi48fvv3f8" path="res://scenes/gate_keeper/senses/sense_choice_confirm.gd" id="1_ns8h7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nhfpb"]
 
 [node name="SenseChoixConfirm" type="Control"]
+visible = false
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 96.0
+offset_bottom = 32.0
+script = ExtResource("1_ns8h7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -84.0
+offset_right = -32.0
+offset_bottom = -84.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 4
@@ -22,6 +32,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="Confirm" type="Button" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.29, 1, 0.633167, 1)
@@ -33,6 +44,7 @@ layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_nhfpb")
 
 [node name="Cancel" type="Button" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0.29, 0.4675, 1)

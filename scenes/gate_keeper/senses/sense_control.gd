@@ -1,5 +1,5 @@
-@tool
 class_name SenseControl extends Control
+
 
 
 @export var sense: Sense : set = _set_sense
@@ -9,14 +9,13 @@ class_name SenseControl extends Control
 
 
 func _ready() -> void:
-	button.pressed.connect(use)
+	button.pressed.connect(on_button_pressed)
 
 
-func use() -> void:
+func on_button_pressed() -> void:
 	if not sense:
 		return
-
-	sense.use()
+	EventBus.sense_button_pressed.emit(self)
 
 
 func _set_sense(value: Sense) -> void:
