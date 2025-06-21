@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="Visitor" load_steps=2 format=3 uid="uid://bnet4gxxt4j3p"]
+[gd_resource type="Resource" script_class="VisitorStats" load_steps=2 format=3 uid="uid://bnet4gxxt4j3p"]
 
-[ext_resource type="Script" uid="uid://c47on7cf0g7pv" path="res://data/visitors/visitor.gd" id="1_pmekw"]
+[ext_resource type="Script" uid="uid://c47on7cf0g7pv" path="res://data/visitors/visitor_stats.gd" id="1_pmekw"]
 
 [resource]
 script = ExtResource("1_pmekw")
 id = "citizen"
-true_name = "Veridian Citizen"
+true_names = Array[String]([])
 profile = 2
 history = ""
 psyche = Array[String](["They project a calm and neutral aura."])

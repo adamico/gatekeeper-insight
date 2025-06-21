@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="Visitor" load_steps=2 format=3 uid="uid://c41t0o3xf68ho"]
+[gd_resource type="Resource" script_class="VisitorStats" load_steps=2 format=3 uid="uid://c41t0o3xf68ho"]
 
-[ext_resource type="Script" uid="uid://c47on7cf0g7pv" path="res://data/visitors/visitor.gd" id="1_7klh8"]
+[ext_resource type="Script" uid="uid://c47on7cf0g7pv" path="res://data/visitors/visitor_stats.gd" id="1_7klh8"]
 
 [resource]
 script = ExtResource("1_7klh8")
 id = "smuggler"
-true_name = "Smuggler"
+true_names = Array[String]([])
 profile = 11
 history = ""
 psyche = Array[String](["They project a subtle, underlying current of nervousness.", "You sense conflicting thoughts: a calm facade over intense worry.", "A clear, deceptive aura is present, masking their true intent.", "Their mental energy is tightly focused on hiding something specific."])

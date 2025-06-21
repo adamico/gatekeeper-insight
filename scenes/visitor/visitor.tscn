@@ -1,17 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://c6wyik70sdnrb"]
 
-[ext_resource type="Script" uid="uid://c6761oci6gn3h" path="res://scenes/visitor/visitor_control.gd" id="1_hbot8"]
-[ext_resource type="LabelSettings" uid="uid://byss7w7gmcpt" path="res://resources/stats_bold_label.tres" id="2_hbot8"]
-[ext_resource type="Texture2D" uid="uid://elwnoej8i5lx" path="res://assets/graphics/body1.png" id="3_gypop"]
-[ext_resource type="Theme" uid="uid://cy61b8kvmmaai" path="res://resources/stats_theme.tres" id="4_u58bb"]
-[ext_resource type="FontFile" uid="uid://b18ldswmcwi1i" path="res://assets/fonts/AaarghNormal-BL595.ttf" id="4_vkw0p"]
+[ext_resource type="Theme" uid="uid://cy61b8kvmmaai" path="res://resources/stats_theme.tres" id="1_hbot8"]
+[ext_resource type="Script" uid="uid://c6761oci6gn3h" path="res://scenes/visitor/visitor.gd" id="2_gypop"]
+[ext_resource type="LabelSettings" uid="uid://byss7w7gmcpt" path="res://resources/stats_bold_label.tres" id="3_u58bb"]
+[ext_resource type="FontFile" uid="uid://b18ldswmcwi1i" path="res://assets/fonts/AaarghNormal-BL595.ttf" id="4_7fll3"]
+[ext_resource type="Texture2D" uid="uid://elwnoej8i5lx" path="res://assets/graphics/body1.png" id="5_0ei7i"]
 
-[node name="VisitorControl" type="Control" groups=["visitor"]]
+[node name="Visitor" type="Control" groups=["visitor"]]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 0
-theme = ExtResource("4_u58bb")
-script = ExtResource("1_hbot8")
+theme = ExtResource("1_hbot8")
+script = ExtResource("2_gypop")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -38,7 +38,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Visitor Name"
-label_settings = ExtResource("2_hbot8")
+label_settings = ExtResource("3_u58bb")
 horizontal_alignment = 1
 
 [node name="ProfileLabel" type="RichTextLabel" parent="PanelContainer/HBoxContainer/ProfileMarginContainer/VBoxContainer"]
@@ -46,7 +46,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/normal_font = ExtResource("4_vkw0p")
+theme_override_fonts/normal_font = ExtResource("4_7fll3")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "Visitor Profile"
@@ -55,7 +55,7 @@ horizontal_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/ProfileMarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("3_gypop")
+texture = ExtResource("5_0ei7i")
 
 [node name="StatsMarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
@@ -80,7 +80,7 @@ custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_vertical = 1
 text = "Psyche:"
-label_settings = ExtResource("2_hbot8")
+label_settings = ExtResource("3_u58bb")
 horizontal_alignment = 2
 
 [node name="Psychic" type="Label" parent="PanelContainer/HBoxContainer/StatsMarginContainer/ScrollContainer/Stats/Psychic"]
@@ -98,7 +98,7 @@ custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_vertical = 1
 text = "Scent:"
-label_settings = ExtResource("2_hbot8")
+label_settings = ExtResource("3_u58bb")
 horizontal_alignment = 2
 
 [node name="Smell" type="Label" parent="PanelContainer/HBoxContainer/StatsMarginContainer/ScrollContainer/Stats/Smell"]
@@ -116,7 +116,7 @@ custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_vertical = 1
 text = "Tactile:"
-label_settings = ExtResource("2_hbot8")
+label_settings = ExtResource("3_u58bb")
 horizontal_alignment = 2
 
 [node name="Tactile" type="Label" parent="PanelContainer/HBoxContainer/StatsMarginContainer/ScrollContainer/Stats/Tactile"]
@@ -134,7 +134,7 @@ custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_vertical = 1
 text = "Temperature:"
-label_settings = ExtResource("2_hbot8")
+label_settings = ExtResource("3_u58bb")
 horizontal_alignment = 2
 
 [node name="Thermal" type="Label" parent="PanelContainer/HBoxContainer/StatsMarginContainer/ScrollContainer/Stats/Thermal"]
@@ -152,7 +152,7 @@ custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_vertical = 1
 text = "Sound:"
-label_settings = ExtResource("2_hbot8")
+label_settings = ExtResource("3_u58bb")
 horizontal_alignment = 2
 
 [node name="Hearing" type="Label" parent="PanelContainer/HBoxContainer/StatsMarginContainer/ScrollContainer/Stats/Hearing"]

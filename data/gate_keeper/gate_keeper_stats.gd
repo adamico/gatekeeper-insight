@@ -55,3 +55,8 @@ func update_focus_rank(sense_id: String) -> void:
     senses_focus_ranks[sense_id] += 1
 
     print("[GateKeeperStats]Focus rank for sense '%s' increased to %2.1f" % [sense_id, senses_focus_ranks[sense_id]])
+
+
+func create_instance() -> Resource:
+    var instance: GateKeeperStats = self.duplicate()
+    return instance

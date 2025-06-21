@@ -1,6 +1,6 @@
-class_name VisitorControl extends Control
+class_name Visitor extends Control
 
-@export var visitor: Visitor : set = _set_visitor
+@export var visitor_stats: VisitorStats : set = _set_visitor_stats
 
 var gate_keeper: GateKeeper
 
@@ -15,33 +15,33 @@ func _ready() -> void:
 	EventBus.sense_used.connect(_update_single_stat_ui)
 
 
-func _set_visitor(value: Visitor) -> void:
+func _set_visitor_stats(value: VisitorStats) -> void:
 	if not is_node_ready():
 		await ready
 
-	visitor = value
-	senses_stats = visitor.get_stats()
+	visitor_stats = value
+	senses_stats = visitor_stats.get_stats()
 	_set_profile_name()
 	_update_stats_ui()
 
 
 func _set_profile_name() -> void:
-	var profile_name: String = visitor.get_profile_name()
+	var profile_name: String = visitor_stats.get_profile_name()
 	var is_known_profile = gate_keeper.is_profile_known(profile_name)
-	var profile_type: int = visitor.get_profile_type()
+	var profile_type: int = visitor_stats.get_profile_type()
 	var profile_label_text: String
-	if profile_type == Visitor.ProfileType.SAFE:
+	if profile_type == VisitorStats.ProfileType.SAFE:
 		profile_label_text = _safe_text(profile_name)
-	elif profile_type == Visitor.ProfileType.DANGEROUS:
+	elif profile_type == VisitorStats.ProfileType.DANGEROUS:
 		profile_label_text = _danger_text(profile_name)
 	else:
 		profile_label_text = "???"
 	profile_label.text = profile_label_text if gate_keeper and is_known_profile else "???"
 
-	var visitor_name: String = visitor.get_true_name() if is_known_profile else visitor.name
+	var visitor_name: String = visitor_stats.get_true_name() if is_known_profile else visitor_stats.name
 	name_label.text = visitor_name
 
-	texture_rect.texture = visitor.texture
+	texture_rect.texture = visitor_stats.texture
 
 
 func _safe_text(text: String) -> String:

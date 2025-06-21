@@ -1,9 +1,9 @@
-## Visitor.gd
-# This script defines a Visitor resource that represents a visitor to the city.
+## VisitorStats.gd
+# This script defines a VisitorStats resource that represents a visitor to the city.
 # It includes properties such as id, true_name, profile, and history.
 # It also includes senses focus values and their corresponding text descriptions.
-# The Visitor can generate a random name, select a random body texture, and generate a history
-class_name Visitor extends Resource
+# The VisitorStats can generate a random name, select a random body texture, and generate a history
+class_name VisitorStats extends Resource
 
 const BODY1: Texture2D = preload("res://assets/graphics/body1.png")
 const BODY2: Texture2D = preload("res://assets/graphics/body2.png")
@@ -181,3 +181,8 @@ func _generate_history() -> void:
         Profile.WITCH:
             history = "A witch, practicing dark magic and casting spells."
         _: "A mysterious visitor with an unknown past."
+
+
+func create_instance() -> Resource:
+    var instance: VisitorStats = self.duplicate()
+    return instance

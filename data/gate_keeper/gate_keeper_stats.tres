@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GateKeeperStats" load_steps=2 format=3 uid="uid://c2lntgk4apep6"]
+
+[ext_resource type="Script" uid="uid://cgbownqpc1qx0" path="res://data/gate_keeper/gate_keeper_stats.gd" id="1_fx5en"]
+
+[resource]
+script = ExtResource("1_fx5en")
+known_profiles = Array[String]([])
+senses_focus_ranks = {
+"hearing": 0,
+"psychic": 0,
+"smell": 0,
+"tactile": 0,
+"thermal": 0
+}
+metadata/_custom_type_script = "uid://cgbownqpc1qx0"

@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="Visitor" load_steps=2 format=3 uid="uid://blx3yr7v8i3tt"]
+[gd_resource type="Resource" script_class="VisitorStats" load_steps=2 format=3 uid="uid://blx3yr7v8i3tt"]
 
-[ext_resource type="Script" uid="uid://c47on7cf0g7pv" path="res://data/visitors/visitor.gd" id="1_tqja4"]
+[ext_resource type="Script" uid="uid://c47on7cf0g7pv" path="res://data/visitors/visitor_stats.gd" id="1_tqja4"]
 
 [resource]
 script = ExtResource("1_tqja4")
 id = "noble"
-true_name = "Veridian Noble"
+true_names = Array[String]([])
 profile = 9
 history = ""
 psyche = Array[String](["They project an aura of confidence and self-importance.", "You sense thoughts of status, duty, or social engagements.", "There's a strong, unwavering sense of their place in the hierarchy.", "Their mental landscape is orderly, focused on reputation and influence."])

@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="Visitor" load_steps=2 format=3 uid="uid://crrtsr6e8aagw"]
+[gd_resource type="Resource" script_class="VisitorStats" load_steps=2 format=3 uid="uid://crrtsr6e8aagw"]
 
-[ext_resource type="Script" uid="uid://c47on7cf0g7pv" path="res://data/visitors/visitor.gd" id="1_oabjc"]
+[ext_resource type="Script" uid="uid://c47on7cf0g7pv" path="res://data/visitors/visitor_stats.gd" id="1_oabjc"]
 
 [resource]
 script = ExtResource("1_oabjc")
 id = "merchant"
-true_name = "Traveling Merchant"
+true_names = Array[String]([])
 profile = 8
 history = ""
 psyche = Array[String](["They project a mix of weariness and excitement.", "You sense practical thoughts, focused on trade and inventory.", "There's a slight anxiety about their goods' safety and profits.", "Their aspirations are clear, centered on financial success."])
