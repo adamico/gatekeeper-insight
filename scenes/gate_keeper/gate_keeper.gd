@@ -44,6 +44,15 @@ func _setup_senses() -> void:
 		print("[GateKeeper] Sense '%s' initialized with focus rank %2.1f" % [sense.id, sense.get_focus_rank()])
 
 
+func _update_focus_pool_label() -> void:
+	var focus_pool_label: Label = %FocusPoolValue
+	focus_pool_label.text = str(int(gate_keeper_stats.get_current_focus_pool()))
+
+
 func _on_sense_focus_changed(_sense: Sense, variation: float) -> void:
+	if variation < 0.0:
+		return  # Ignore sense focus decrease events
+
 	gate_keeper_stats.update_focus_pool(variation)
+	_update_focus_pool_label()
 	print("[GateKeeper] Focus pool updated: %2.1f" % gate_keeper_stats._current_focus_pool)

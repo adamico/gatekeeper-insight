@@ -31,11 +31,18 @@ func is_profile_known(profile_name: String) -> bool:
     return known_profiles.has(profile_name)
 
 
+## Get the current focus pool of the gate keeper
+## @return: The current focus pool value
+func get_current_focus_pool() -> float:
+    return _current_focus_pool
+
+
 ## Update the focus pool of the gate keeper
 ## This method is called to adjust the current focus pool based on the provided variation.
 ## @param variation: The amount to adjust the focus pool by
 ## It can be positive or negative, depending on the game logic.
 func update_focus_pool(variation: float) -> void:
+    variation = -variation  # Invert the variation to match the game logic
     print("[GateKeeperStats]Updating focus pool: current %2.1f, variation %2.1f" % [_current_focus_pool, variation])
     _current_focus_pool += variation
     _current_focus_pool = clamp(_current_focus_pool, 0.0, max_focus_pool)
