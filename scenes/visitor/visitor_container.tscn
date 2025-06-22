@@ -14,18 +14,22 @@ theme = ExtResource("1_fdl17")
 script = ExtResource("2_covst")
 visitor_stats = ExtResource("3_g6d7n")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="ProfileMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ProfileMarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="NameLabel" type="Label" parent="HBoxContainer/ProfileMarginContainer/VBoxContainer"]
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -33,9 +37,9 @@ text = "Visitor Name"
 label_settings = ExtResource("3_gb5y0")
 horizontal_alignment = 1
 
-[node name="ProfileLabel" type="RichTextLabel" parent="HBoxContainer/ProfileMarginContainer/VBoxContainer"]
+[node name="ProfileLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(150, 48)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("4_g6d7n")
@@ -44,7 +48,7 @@ bbcode_enabled = true
 text = "Visitor Profile"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ProfileMarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
@@ -52,118 +56,116 @@ texture = ExtResource("5_jxk2j")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="StatsMarginContainer" type="MarginContainer" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/StatsMarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
 
-[node name="Stats" type="VBoxContainer" parent="HBoxContainer/StatsMarginContainer/ScrollContainer"]
+[node name="Stats" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScrollContainer"]
 layout_mode = 2
 
-[node name="Psychic" type="HBoxContainer" parent="HBoxContainer/StatsMarginContainer/ScrollContainer/Stats"]
+[node name="Psychic" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="PsychicLabel" type="Label" parent="HBoxContainer/StatsMarginContainer/ScrollContainer/Stats/Psychic"]
+[node name="PsychicLabel" type="Label" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats/Psychic"]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("4_g6d7n")
+theme_override_font_sizes/font_size = 32
 text = "Psyche:"
-label_settings = ExtResource("3_gb5y0")
 horizontal_alignment = 2
 
-[node name="Psychic" type="Label" parent="HBoxContainer/StatsMarginContainer/ScrollContainer/Stats/Psychic"]
+[node name="Psychic" type="Label" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats/Psychic"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_g6d7n")
 autowrap_mode = 3
 
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer/StatsMarginContainer/ScrollContainer/Stats"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats"]
 layout_mode = 2
 
-[node name="Smell" type="HBoxContainer" parent="HBoxContainer/StatsMarginContainer/ScrollContainer/Stats"]
+[node name="Smell" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="SmellLabel" type="Label" parent="HBoxContainer/StatsMarginContainer/ScrollContainer/Stats/Smell"]
+[node name="SmellLabel" type="Label" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats/Smell"]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("4_g6d7n")
+theme_override_font_sizes/font_size = 32
 text = "Scent:"
-label_settings = ExtResource("3_gb5y0")
 horizontal_alignment = 2
 
-[node name="Smell" type="Label" parent="HBoxContainer/StatsMarginContainer/ScrollContainer/Stats/Smell"]
+[node name="Smell" type="Label" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats/Smell"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_g6d7n")
 autowrap_mode = 3
 
-[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/StatsMarginContainer/ScrollContainer/Stats"]
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats"]
 layout_mode = 2
 
-[node name="Tactile" type="HBoxContainer" parent="HBoxContainer/StatsMarginContainer/ScrollContainer/Stats"]
+[node name="Tactile" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="TactileLabel" type="Label" parent="HBoxContainer/StatsMarginContainer/ScrollContainer/Stats/Tactile"]
+[node name="TactileLabel" type="Label" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats/Tactile"]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("4_g6d7n")
+theme_override_font_sizes/font_size = 32
 text = "Tactile:"
-label_settings = ExtResource("3_gb5y0")
 horizontal_alignment = 2
 
-[node name="Tactile" type="Label" parent="HBoxContainer/StatsMarginContainer/ScrollContainer/Stats/Tactile"]
+[node name="Tactile" type="Label" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats/Tactile"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_g6d7n")
 autowrap_mode = 3
 
-[node name="Thermal" type="HBoxContainer" parent="HBoxContainer/StatsMarginContainer/ScrollContainer/Stats"]
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats"]
+layout_mode = 2
+
+[node name="Thermal" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="ThermalLabel" type="Label" parent="HBoxContainer/StatsMarginContainer/ScrollContainer/Stats/Thermal"]
+[node name="ThermalLabel" type="Label" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats/Thermal"]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("4_g6d7n")
+theme_override_font_sizes/font_size = 32
 text = "Temperature:"
-label_settings = ExtResource("3_gb5y0")
 horizontal_alignment = 2
 
-[node name="Thermal" type="Label" parent="HBoxContainer/StatsMarginContainer/ScrollContainer/Stats/Thermal"]
+[node name="Thermal" type="Label" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats/Thermal"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_g6d7n")
 autowrap_mode = 3
 
-[node name="Hearing" type="HBoxContainer" parent="HBoxContainer/StatsMarginContainer/ScrollContainer/Stats"]
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats"]
+layout_mode = 2
+
+[node name="Hearing" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="HearingLabel" type="Label" parent="HBoxContainer/StatsMarginContainer/ScrollContainer/Stats/Hearing"]
+[node name="HearingLabel" type="Label" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats/Hearing"]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("4_g6d7n")
+theme_override_font_sizes/font_size = 32
 text = "Sound:"
-label_settings = ExtResource("3_gb5y0")
 horizontal_alignment = 2
 
-[node name="Hearing" type="Label" parent="HBoxContainer/StatsMarginContainer/ScrollContainer/Stats/Hearing"]
+[node name="Hearing" type="Label" parent="MarginContainer/HBoxContainer/ScrollContainer/Stats/Hearing"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_g6d7n")
 autowrap_mode = 3

@@ -1,0 +1,203 @@
+[gd_scene load_steps=18 format=3 uid="uid://f08n6vx8ohof"]
+
+[ext_resource type="Theme" uid="uid://rcmme2uurlhn" path="res://resources/theme.tres" id="1_bqqt6"]
+[ext_resource type="Script" uid="uid://c2sfobjhalj2f" path="res://scenes/main_menu.gd" id="2_8ln24"]
+[ext_resource type="Texture2D" uid="uid://cks3qexeltlwe" path="res://assets/graphics/background.png" id="2_wu84c"]
+[ext_resource type="Texture2D" uid="uid://318mr7ueabam" path="res://assets/graphics/thinker.png" id="3_8ln24"]
+[ext_resource type="Texture2D" uid="uid://c5iw3nl88p88l" path="res://assets/graphics/bodies.png" id="5_8ln24"]
+[ext_resource type="AudioStream" uid="uid://cx428ii1wqjcs" path="res://assets/graphics/AAM530_001_Politica_Full.mp3" id="6_rtw2f"]
+[ext_resource type="Script" uid="uid://bc2suj2evklt1" path="res://scenes/credits.gd" id="7_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://2ugvesemjsdr" path="res://assets/graphics/82-Unseen.png" id="8_flqon"]
+[ext_resource type="Texture2D" uid="uid://dchcniaa8sm3s" path="res://assets/graphics/report_card.png" id="9_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://6qtg47624ci6" path="res://assets/graphics/Wildling_head_only-4k.png" id="10_1ajci"]
+[ext_resource type="Theme" uid="uid://cy61b8kvmmaai" path="res://resources/stats_theme.tres" id="11_7b55j"]
+[ext_resource type="AudioStream" uid="uid://coyltecaoj8rx" path="res://assets/sounds/COMPUTER-KEYBOARD_GEN-HDF-08226.ogg" id="12_flqon"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8ln24"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rtw2f"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 360.0
+spread = 0.0
+initial_velocity_min = 40.0
+initial_velocity_max = 120.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.5
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+anim_offset_max = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_rtw2f"]
+font_size = 96
+
+[sub_resource type="Gradient" id="Gradient_ooihk"]
+colors = PackedColorArray(0.163939, 0.0929236, 0.0377782, 1, 0.163939, 0.0929236, 0.0377782, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ih6pn"]
+gradient = SubResource("Gradient_ooihk")
+fill_from = Vector2(1, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bqqt6")
+script = ExtResource("2_8ln24")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.258824, 0.258824, 0.258824, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wu84c")
+expand_mode = 2
+
+[node name="Bodies" type="GPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.466667)
+material = SubResource("CanvasItemMaterial_8ln24")
+position = Vector2(-177, 392)
+amount = 60
+texture = ExtResource("5_8ln24")
+lifetime = 60.0
+preprocess = 20.0
+visibility_rect = Rect2(-650, 0, 1300, 650)
+process_material = SubResource("ParticleProcessMaterial_rtw2f")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -614.0
+offset_top = 130.0
+offset_right = 614.0
+offset_bottom = 265.0
+grow_horizontal = 2
+text = "The Gatekeeper's Insight"
+label_settings = SubResource("LabelSettings_rtw2f")
+horizontal_alignment = 1
+
+[node name="Gatekeeper" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -40.0
+offset_right = 128.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_8ln24")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -614.0
+offset_top = -135.0
+offset_right = 614.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="CreditsButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Credits"
+
+[node name="PlayButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Quit"
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_rtw2f")
+autoplay = true
+
+[node name="Credits" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_lgwnu")
+
+[node name="BG" type="TextureRect" parent="Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ih6pn")
+
+[node name="Unseen" type="TextureRect" parent="Credits"]
+layout_mode = 1
+offset_left = 605.0
+offset_top = 108.0
+offset_right = 3305.0
+offset_bottom = 878.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("8_flqon")
+
+[node name="Wildcards" type="TextureRect" parent="Credits"]
+layout_mode = 1
+offset_left = 976.0
+offset_top = 392.0
+offset_right = 1841.0
+offset_bottom = 1596.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_lgwnu")
+
+[node name="WildlingHeadOnly-4k" type="Sprite2D" parent="Credits"]
+position = Vector2(298, 199)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_1ajci")
+
+[node name="BackButton" type="Button" parent="Credits"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 90.0
+offset_top = 495.0
+offset_right = 393.0
+offset_bottom = 672.0
+theme = ExtResource("11_7b55j")
+theme_override_font_sizes/font_size = 128
+text = "Back"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("12_flqon")

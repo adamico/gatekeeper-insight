@@ -20,11 +20,16 @@ var visitor: Node
 @onready var gate_keeper_position: Marker2D = %GateKeeperPosition
 @onready var visitor_position: Marker2D = %VisitorPosition
 @onready var actions_position: Marker2D = %ActionsPosition
+@onready var day_end: Node = %DayEnd
+
 
 func _ready() -> void:
 	_start()
 	EventBus.visitor_admitted.connect(_new_visitor.unbind(1))
 	EventBus.visitor_denied.connect(_new_visitor.unbind(1))
+	GameStats.day_completed.connect(_on_day_completed)
+	EventBus.next_day_started.connect(_on_next_day_started)
+
 	print("Main scene is ready.")
 
 
@@ -51,3 +56,12 @@ func _new_visitor() -> void:
 	var random_visitor_stats = VISITOR_STATS.pick_random().create_instance()
 	visitor.visitor_stats = random_visitor_stats
 	visitor_position.add_child(visitor)
+
+func _on_day_completed(_day_number: int, _score: float, _rating: String) -> void:
+	day_end.show()
+
+
+func _on_next_day_started(day_number: int) -> void:
+	print("Next day started: Day %d" % day_number)
+	day_end.hide()
+

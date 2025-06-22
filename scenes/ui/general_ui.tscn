@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn7s3fjnhlrir"]
+
+[ext_resource type="Script" uid="uid://day1yg2h7105y" path="res://scenes/ui/general_ui.gd" id="2_urydd"]
+
+[node name="GeneralUIContainer" type="MarginContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 104.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+script = ExtResource("2_urydd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Day" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="DayLabel" type="Label" parent="VBoxContainer/Day"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Day:"
+
+[node name="DayValue" type="Label" parent="VBoxContainer/Day"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "1"
+
+[node name="RemainingVisitors" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="RemainingVisitorsLabel" type="Label" parent="VBoxContainer/RemainingVisitors"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Visitors remaining:"
+
+[node name="RemainingVisitorsValue" type="Label" parent="VBoxContainer/RemainingVisitors"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "1"
+
+[node name="Accepted" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="AcceptedLabel" type="Label" parent="VBoxContainer/Accepted"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Accepted:"
+
+[node name="AcceptedValue" type="Label" parent="VBoxContainer/Accepted"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="Denied" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="DeniedLabel" type="Label" parent="VBoxContainer/Denied"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Denied:"
+
+[node name="DeniedValue" type="Label" parent="VBoxContainer/Denied"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "0"

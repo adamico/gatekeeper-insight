@@ -75,4 +75,4 @@ func _update_single_stat_ui(sense: Sense, _variation: float) -> void:
 		var sense_text: String = str(senses_stats[sense.id][i])
 		sense_text_fragments.append(sense_text)
 
-	sense_value_label.text = ", ".join(sense_text_fragments)
+	sense_value_label.text = " ".join(sense_text_fragments)

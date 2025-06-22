@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bycneypof0jv5"]
+[gd_scene load_steps=4 format=3 uid="uid://bycneypof0jv5"]
 
+[ext_resource type="Theme" uid="uid://rcmme2uurlhn" path="res://resources/theme.tres" id="1_0msoe"]
 [ext_resource type="Script" uid="uid://dq4ygsq6su6m3" path="res://scenes/ui/actions_container.gd" id="1_dg7xc"]
+[ext_resource type="AudioStream" uid="uid://coyltecaoj8rx" path="res://assets/sounds/COMPUTER-KEYBOARD_GEN-HDF-08226.ogg" id="3_5u8p7"]
 
 [node name="ActionContainer" type="VBoxContainer"]
 offset_right = 664.0
-offset_bottom = 140.0
+offset_bottom = 159.0
+theme = ExtResource("1_0msoe")
 script = ExtResource("1_dg7xc")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -36,3 +39,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Deny entry"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_5u8p7")

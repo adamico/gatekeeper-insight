@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_pmekw")
 id = ""
-true_names = Array[String]([])
+true_names = Array[String](["Tombadil"])
 profile = 2
 history = ""
 psyche = Array[String](["They project a calm and neutral aura."])

@@ -14,42 +14,42 @@ const BODY6: Texture2D = preload("res://assets/graphics/body6.png")
 const BODY7: Texture2D = preload("res://assets/graphics/body7.png")
 const BODY8: Texture2D = preload("res://assets/graphics/body8.png")
 const BODIES: Array = [
-    BODY1,
-    BODY2,
-    BODY3,
-    BODY4,
-    BODY5,
-    BODY6,
-    BODY7,
-    BODY8
+	BODY1,
+	BODY2,
+	BODY3,
+	BODY4,
+	BODY5,
+	BODY6,
+	BODY7,
+	BODY8
 ]
 
 enum Profile {
-    ANGEL,
-    ASSASSIN,
-    CITIZEN,
-    CONSTRUCT,
-    CULTIST,
-    DEMON,
-    FARMER,
-    GUARD,
-    MERCHANT,
-    NOBLE,
-    SHIFTER,
-    SMUGGLER,
-    SPY,
-    TOURIST,
-    TRAVELING_MERCHANT,
-    VAGRANT,
-    VAMPIRE,
-    WEREWOLF,
-    WITCH,
+	ANGEL,
+	ASSASSIN,
+	CITIZEN,
+	CONSTRUCT,
+	CULTIST,
+	DEMON,
+	FARMER,
+	GUARD,
+	MERCHANT,
+	NOBLE,
+	SHIFTER,
+	SMUGGLER,
+	SPY,
+	TOURIST,
+	TRAVELING_MERCHANT,
+	VAGRANT,
+	VAMPIRE,
+	WEREWOLF,
+	WITCH,
 }
 
 enum ProfileType {
-    SAFE,
-    DANGEROUS,
-    UNKNOWN,
+	SAFE,
+	DANGEROUS,
+	UNKNOWN,
 }
 
 @export var id: String
@@ -71,117 +71,141 @@ var texture: Texture2D
 
 
 func _init() -> void:
-    # generate a random name
-    name = "Visitor_" + str(randi() % 1000)
-    # randomly select a body texture
-    texture = BODIES.pick_random()
-    _generate_history()
+	# generate a random name
+	name = "Visitor_" + str(randi() % 1000)
+	# randomly select a body texture
+	texture = BODIES.pick_random()
+	_generate_history()
 
 
 func get_stats() -> Dictionary[String, Array]:
-    # Return a dictionary of stats for the visitor
-    return {
-        "psychic": psyche,
-        "smell": scent,
-        "hearing": sound,
-        "thermal": temperature,
-        "tactile": tactile
-    }
+	# Return a dictionary of stats for the visitor
+	return {
+		"psychic": psyche,
+		"smell": scent,
+		"hearing": sound,
+		"thermal": temperature,
+		"tactile": tactile
+	}
 
 
 func get_true_name() -> String:
-    return true_names.pick_random()
+	return true_names.pick_random()
 
 
 func get_profile_type() -> ProfileType:
-    var profile_type: ProfileType
-    match profile:
-        Profile.ANGEL, Profile.CITIZEN, Profile.TOURIST, Profile.TRAVELING_MERCHANT,\
-        Profile.NOBLE, Profile.FARMER, Profile.GUARD, Profile.MERCHANT:
-            profile_type = ProfileType.SAFE
-        Profile.ASSASSIN, Profile.CONSTRUCT, Profile.CULTIST, Profile.DEMON, Profile.SHIFTER,\
-        Profile.SMUGGLER, Profile.SPY, Profile.VAGRANT, Profile.VAMPIRE, Profile.WEREWOLF, Profile.WITCH:
-            profile_type = ProfileType.DANGEROUS
-        _:
-            profile_type = ProfileType.UNKNOWN
-    return profile_type
+	var profile_type: ProfileType
+	match profile:
+		Profile.ANGEL, Profile.CITIZEN, Profile.TOURIST, Profile.TRAVELING_MERCHANT,\
+		Profile.NOBLE, Profile.FARMER, Profile.GUARD, Profile.MERCHANT:
+			profile_type = ProfileType.SAFE
+		Profile.ASSASSIN, Profile.CONSTRUCT, Profile.CULTIST, Profile.DEMON, Profile.SHIFTER,\
+		Profile.SMUGGLER, Profile.SPY, Profile.VAGRANT, Profile.VAMPIRE, Profile.WEREWOLF, Profile.WITCH:
+			profile_type = ProfileType.DANGEROUS
+		_:
+			profile_type = ProfileType.UNKNOWN
+	return profile_type
 
 
 func get_profile_name() -> String:
-    var profile_name: String
-    match profile:
-        Profile.ANGEL:
-            profile_name = "Angel"
-        Profile.ASSASSIN:
-            profile_name = "Assassin"
-        Profile.CITIZEN:
-            profile_name = "Citizen"
-        Profile.CONSTRUCT:
-            profile_name = "Construct"
-        Profile.CULTIST:
-            profile_name = "Cultist"
-        Profile.DEMON:
-            profile_name = "Demon"
-        Profile.SHIFTER:
-            profile_name = "Shifter"
-        Profile.SMUGGLER:
-            profile_name = "Smuggler"
-        Profile.SPY:
-            profile_name = "Spy"
-        Profile.TOURIST:
-            profile_name = "Tourist"
-        Profile.TRAVELING_MERCHANT:
-            profile_name = "Traveling Merchant"
-        Profile.VAGRANT:
-            profile_name = "Vagrant"
-        Profile.VAMPIRE:
-            profile_name = "Vampire"
-        Profile.WEREWOLF:
-            profile_name = "Werewolf"
-        Profile.WITCH:
-            profile_name = "Witch"
-        _:
-            profile_name = "???"
-        
-    return profile_name
+	var profile_name: String
+	match profile:
+		Profile.ANGEL:
+			profile_name = "Angel"
+		Profile.ASSASSIN:
+			profile_name = "Assassin"
+		Profile.CITIZEN:
+			profile_name = "Citizen"
+		Profile.CONSTRUCT:
+			profile_name = "Construct"
+		Profile.CULTIST:
+			profile_name = "Cultist"
+		Profile.DEMON:
+			profile_name = "Demon"
+		Profile.SHIFTER:
+			profile_name = "Shifter"
+		Profile.SMUGGLER:
+			profile_name = "Smuggler"
+		Profile.SPY:
+			profile_name = "Spy"
+		Profile.TOURIST:
+			profile_name = "Tourist"
+		Profile.TRAVELING_MERCHANT:
+			profile_name = "Traveling Merchant"
+		Profile.VAGRANT:
+			profile_name = "Vagrant"
+		Profile.VAMPIRE:
+			profile_name = "Vampire"
+		Profile.WEREWOLF:
+			profile_name = "Werewolf"
+		Profile.WITCH:
+			profile_name = "Witch"
+		_:
+			profile_name = "???"
+
+	return profile_name
+
+
+func get_sense_value(sense_id: String) -> float:
+	# Return the value for the corresponding sense
+	# You can implement this based on how your visitor stats are structured
+	match sense_id:
+		"psychic":
+			return float(psyche.size())
+		"hearing":
+			return float(sound.size())
+		"smell":
+			return float(scent.size())
+		"thermal":
+			return float(temperature.size())
+		"tactile":
+			return float(tactile.size())
+		_:
+			push_error("Unknown sense ID: %s" % sense_id)
+			return 0.0
 
 
 func _generate_history() -> void:
-    # Generate a random history based on the profile
-    match profile:
-        Profile.ANGEL:
-            history = "An angelic being, sent to guide and protect the innocent."
-        Profile.ASSASSIN:
-            history = "A skilled assassin, trained in the art of stealth and deception."
-        Profile.CITIZEN:
-            history = "A regular citizen, living a simple life in the city."
-        Profile.CONSTRUCT:
-            history = "A mechanical construct, built to serve and protect."
-        Profile.CULTIST:
-            history = "A member of a dark cult, devoted to a sinister cause."
-        Profile.DEMON:
-            history = "A demon from the underworld, seeking to spread chaos and destruction."
-        Profile.SHIFTER:
-            history = "A shapeshifter, able to change their form at will."
-        Profile.SMUGGLER:
-            history = "A smuggler, skilled in the art of sneaking goods past authorities."
-        Profile.SPY:
-            history = "A spy, gathering information for a secret organization."
-        Profile.TOURIST:
-            history = "A tourist, exploring the wonders of the world."
-        Profile.TRAVELING_MERCHANT:
-            history = "A traveling merchant, trading goods and stories from distant lands."
-        Profile.VAGRANT:
-            history = "A vagrant, wandering the streets in search of shelter and food."
-        Profile.VAMPIRE:
-            history = "A vampire, cursed to roam the night in search of blood."
-        Profile.WEREWOLF:
-            history = "A werewolf, cursed to transform under the full moon."
-        Profile.WITCH:
-            history = "A witch, practicing dark magic and casting spells."
-        _: "A mysterious visitor with an unknown past."
+	# Generate a random history based on the profile
+	match profile:
+		Profile.ANGEL:
+			history = "An angelic being, sent to guide and protect the innocent."
+		Profile.ASSASSIN:
+			history = "A skilled assassin, trained in the art of stealth and deception."
+		Profile.CITIZEN:
+			history = "A regular citizen, living a simple life in the city."
+		Profile.CONSTRUCT:
+			history = "A mechanical construct, built to serve and protect."
+		Profile.CULTIST:
+			history = "A member of a dark cult, devoted to a sinister cause."
+		Profile.DEMON:
+			history = "A demon from the underworld, seeking to spread chaos and destruction."
+		Profile.SHIFTER:
+			history = "A shapeshifter, able to change their form at will."
+		Profile.SMUGGLER:
+			history = "A smuggler, skilled in the art of sneaking goods past authorities."
+		Profile.SPY:
+			history = "A spy, gathering information for a secret organization."
+		Profile.TOURIST:
+			history = "A tourist, exploring the wonders of the world."
+		Profile.TRAVELING_MERCHANT:
+			history = "A traveling merchant, trading goods and stories from distant lands."
+		Profile.VAGRANT:
+			history = "A vagrant, wandering the streets in search of shelter and food."
+		Profile.VAMPIRE:
+			history = "A vampire, cursed to roam the night in search of blood."
+		Profile.WEREWOLF:
+			history = "A werewolf, cursed to transform under the full moon."
+		Profile.WITCH:
+			history = "A witch, practicing dark magic and casting spells."
+		_: "A mysterious visitor with an unknown past."
 
 
 func create_instance() -> Resource:
-    var instance: VisitorStats = self.duplicate()
-    return instance
+	var instance: VisitorStats = self.duplicate()
+	return instance
+
+
+func should_be_admitted() -> bool:
+	# Logic to determine if visitor should be allowed in
+	return get_profile_type() != ProfileType.DANGEROUS
