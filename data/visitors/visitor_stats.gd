@@ -52,7 +52,6 @@ enum ProfileType {
     UNKNOWN,
 }
 
-
 @export var id: String
 @export var true_names: Array[String]
 @export var profile: Profile

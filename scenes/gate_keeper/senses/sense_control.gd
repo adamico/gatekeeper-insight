@@ -1,31 +1,39 @@
 class_name SenseControl extends Control
 
-
-
 @export var sense: Sense : set = _set_sense
 
-@onready var button: Button = %Button
-@onready var label: Label = %Label
+var focus_value: float
+
+@onready var sense_texture_rect: TextureRect = %SenseTextureRect
+@onready var focus_increase_button: Button = %FocusIncreaseButton
+@onready var focus_decrease_button: Button = %FocusDecreaseButton
+@onready var focus_value_label: Label = %FocusValueLabel
 
 
 func _ready() -> void:
-	button.pressed.connect(on_button_pressed)
-	button.mouse_entered.connect(_on_mouse_entered)
-	button.mouse_exited.connect(_on_mouse_exited)
+	focus_increase_button.pressed.connect(_on_focus_change_pressed.bind(1.0))
+	focus_decrease_button.pressed.connect(_on_focus_change_pressed.bind(-1.0))
 
 
-func on_button_pressed() -> void:
+
+func _on_focus_change_pressed(variation: float) -> void:
 	if not sense:
 		return
-	EventBus.sense_button_pressed.emit(self)
+	sense.update_focus(variation)
+	_try_disable_buttons()
+	_update_focus_value_label()
 
 
-func _on_mouse_entered() -> void:
-	label.show()
+func _try_disable_buttons() -> void:
+	if not sense:
+		return
+	focus_value = sense.get_focus_rank()
+	focus_decrease_button.disabled = focus_value <= 0.0
+	focus_increase_button.disabled = sense.is_focus_maxed()
 
 
-func _on_mouse_exited() -> void:
-	label.hide()
+func _update_focus_value_label() -> void:
+	focus_value_label.text = str(int(focus_value)) if focus_value < sense.max_focus_rank else "MAX"
 
 
 func _set_sense(value: Sense) -> void:
@@ -33,5 +41,6 @@ func _set_sense(value: Sense) -> void:
 		await ready
 
 	sense = value
-	label.text = sense.name
-	button.icon = sense.texture
+	_try_disable_buttons()
+	_update_focus_value_label()
+	sense_texture_rect.texture = sense.texture

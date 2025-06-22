@@ -2,19 +2,17 @@
 # This script defines a resource that manages the gatekeeper's known visitor profiles.
 # It allows adding profiles and checking if a profile is known.
 # It is used by the GateKeeper to manage visitor profiles efficiently.
+# It also manages the focus pool, which is used to track the gatekeeper's focus capacity.
+# The focus pool decreases when the gatekeeper interacts with visitors and regenerates over time.
 class_name GateKeeperStats extends Resource
 
 @export var known_profiles: Array[String] = []
-@export var senses_focus_ranks: Dictionary = {
-    "psychic": 0,
-    "smell": 0,
-    "hearing": 0,
-    "thermal": 0,
-    "tactile": 0,
-}
+@export var max_focus_pool:= 15.0
+@export var focus_pool_regen_rate:= 1.0
 
-var _max_focus_rank:= 3
+@export var senses_list: SensesList
 
+var _current_focus_pool:= max_focus_pool
 
 ## Add a profile to the gate keeper's known profiles
 ## @param profile_name: The name of the profile to add
@@ -33,30 +31,20 @@ func is_profile_known(profile_name: String) -> bool:
     return known_profiles.has(profile_name)
 
 
-func get_focus_rank(sense_id: String) -> int:
-    return senses_focus_ranks[sense_id] if senses_focus_ranks.has(sense_id) else 0
-
-
-func update_focus_rank(sense_id: String) -> void:
-    print ("[GateKeeperStats]Try increasing focus rank for sense '%s' from %2.1f to %2.1f"\
-        % [sense_id, senses_focus_ranks[sense_id], senses_focus_ranks[sense_id] + 1])
+## Update the focus pool of the gate keeper
+## This method is called to adjust the current focus pool based on the provided variation.
+## @param variation: The amount to adjust the focus pool by
+## It can be positive or negative, depending on the game logic.
+func update_focus_pool(variation: float) -> void:
+    print("[GateKeeperStats]Updating focus pool: current %2.1f, variation %2.1f" % [_current_focus_pool, variation])
+    _current_focus_pool += variation
+    _current_focus_pool = clamp(_current_focus_pool, 0.0, max_focus_pool)
     
-    # ensure the sense name is valid
-    if not senses_focus_ranks.keys().has(sense_id):
-        print("[GateKeeperStats]Invalid sense name: '%s'" % sense_id)
-        return
 
-    # ensure the focus rank is not already at the maximum
-    if senses_focus_ranks[sense_id] >= _max_focus_rank:
-        print("[GateKeeperStats]Focus rank for sense '%s' is already at maximum (%2.1f)" % [sense_id, _max_focus_rank])
-        return
-    
-    # increase the focus rank for the sense
-    senses_focus_ranks[sense_id] += 1
-
-    print("[GateKeeperStats]Focus rank for sense '%s' increased to %2.1f" % [sense_id, senses_focus_ranks[sense_id]])
-
-
+## Create a new instance of GateKeeperStats
+## This method duplicates the current instance and returns it.
+## @return: A new instance of GateKeeperStats
+## This is useful for creating a fresh state without affecting the original instance.
 func create_instance() -> Resource:
-    var instance: GateKeeperStats = self.duplicate()
+    var instance: GateKeeperStats = self.duplicate(true)
     return instance

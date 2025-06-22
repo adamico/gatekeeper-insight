@@ -13,4 +13,5 @@ scent = Array[String](["You detect a common scent, but with an unfamiliar, faint
 sound = Array[String](["You hear a faint, almost imperceptible extra rustle in their clothing.", "A slight, unnatural stiffness in their movements is audible.", "You pick up a faint, irregular rattle or soft thud from hidden compartments.", "Their attempts to move silently create subtle, unnatural creaks."])
 temperature = Array[String](["Their body warmth seems slightly irregular in certain areas.", "Areas where items are concealed might show minor thermal discrepancies.", "A faint, uneven temperature distribution indicates hidden objects cooling/warming skin.", "Their thermal signature is subtly disrupted by concealed items' temperatures."])
 tactile = Array[String](["Their steps are a little too careful, too precise.", "You feel a slight, internal tremor of anxious anticipation.", "Small, inconsistent shifts in weight betray hidden, unbalanced items.", "Their overall body vibration feels unnaturally rigid, holding something in place."])
+senses_stats = null
 metadata/_custom_type_script = "uid://c47on7cf0g7pv"

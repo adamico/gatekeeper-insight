@@ -1,34 +1,47 @@
-[gd_scene load_steps=6 format=3 uid="uid://fmqnq17byogm"]
+[gd_scene load_steps=5 format=3 uid="uid://fmqnq17byogm"]
 
 [ext_resource type="Texture2D" uid="uid://318mr7ueabam" path="res://assets/graphics/thinker.png" id="1_8m8nn"]
 [ext_resource type="Script" uid="uid://bkaaqsx8x6yy" path="res://scenes/gate_keeper/gate_keeper.gd" id="1_nhfpb"]
-[ext_resource type="Script" uid="uid://cgbownqpc1qx0" path="res://data/gate_keeper/gate_keeper_stats.gd" id="2_nhfpb"]
-[ext_resource type="PackedScene" uid="uid://bvpr1timpu6d0" path="res://scenes/gate_keeper/senses/senses.tscn" id="3_nhfpb"]
-
-[sub_resource type="Resource" id="Resource_w8es7"]
-script = ExtResource("2_nhfpb")
-known_profiles = Array[String]([])
-senses_focus_ranks = {
-"hearing": 0,
-"psychic": 0,
-"smell": 0,
-"tactile": 0,
-"thermal": 0
-}
-metadata/_custom_type_script = "uid://cgbownqpc1qx0"
+[ext_resource type="Theme" uid="uid://rcmme2uurlhn" path="res://resources/theme.tres" id="9_pj1yq"]
+[ext_resource type="LabelSettings" uid="uid://byss7w7gmcpt" path="res://resources/stats_bold_label.tres" id="10_vij0e"]
 
 [node name="GateKeeper" type="Node2D" groups=["gate_keeper"]]
 script = ExtResource("1_nhfpb")
-gate_keeper_stats = SubResource("Resource_w8es7")
 
 [node name="GateKeeperSprite" type="Sprite2D" parent="."]
 position = Vector2(6, 0)
 texture = ExtResource("1_8m8nn")
 centered = false
 
-[node name="Senses" parent="." instance=ExtResource("3_nhfpb")]
+[node name="SensesPosition" type="Marker2D" parent="."]
+position = Vector2(236, -272)
+
+[node name="SensesRootContainer" type="MarginContainer" parent="SensesPosition"]
 unique_name_in_owner = true
-offset_left = 133.0
-offset_top = -31.0
-offset_right = 133.0
-offset_bottom = -31.0
+offset_right = 154.0
+offset_bottom = 314.0
+theme = ExtResource("9_pj1yq")
+metadata/_edit_horizontal_guides_ = [-125.0, 125.0]
+metadata/_edit_vertical_guides_ = [-50.0, -125.0, -200.0, 50.0, 125.0, 200.0]
+
+[node name="SensesContainer" type="VBoxContainer" parent="SensesPosition/SensesRootContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FocusPool" type="HBoxContainer" parent="SensesPosition/SensesRootContainer/SensesContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("9_pj1yq")
+
+[node name="FocusPoolLabel" type="Label" parent="SensesPosition/SensesRootContainer/SensesContainer/FocusPool"]
+layout_mode = 2
+text = "Focus Pool: "
+label_settings = ExtResource("10_vij0e")
+horizontal_alignment = 1
+
+[node name="FocusPoolValue" type="Label" parent="SensesPosition/SensesRootContainer/SensesContainer/FocusPool"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "15"
+label_settings = ExtResource("10_vij0e")

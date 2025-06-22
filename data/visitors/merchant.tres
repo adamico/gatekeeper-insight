@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="VisitorStats" load_steps=2 format=3 uid="uid://crrtsr6e8aagw"]
+[gd_resource type="Resource" script_class="VisitorStats" load_steps=3 format=3 uid="uid://crrtsr6e8aagw"]
 
 [ext_resource type="Script" uid="uid://c47on7cf0g7pv" path="res://data/visitors/visitor_stats.gd" id="1_oabjc"]
+[ext_resource type="Script" uid="uid://dxqwkt31rbvn8" path="res://data/visitors/sense_stats/sense_stat.gd" id="2_jau3s"]
 
 [resource]
 script = ExtResource("1_oabjc")
@@ -13,4 +14,5 @@ scent = Array[String](["You detect a blend of road dust and foreign fabrics.", "
 sound = Array[String](["You hear the faint creak of worn leather and sturdy boots.", "Their breath is steady, with the slight occasional cough of a road traveler.", "You pick up the subtle jingle of coins or small trade goods.", "Their internal rhythm is tired but resilient from long journeys."])
 temperature = Array[String](["Their body warmth is standard, but slightly cooler from outdoor exposure.", "Hands and feet might be a little colder than their core.", "Their body heat subtly reflects recent physical exertion.", "Their thermal signature is consistent with a journeyed, active human."])
 tactile = Array[String](["Their steps are deliberate and slightly heavy from carrying packs.", "You feel the subtle sway of their body as if accustomed to riding.", "Small, residual vibrations from their last mode of transport linger.", "Their gait shows the solid impact of someone used to varied terrain."])
+senses_stats = Array[ExtResource("2_jau3s")]([])
 metadata/_custom_type_script = "uid://c47on7cf0g7pv"

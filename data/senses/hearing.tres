@@ -7,6 +7,8 @@
 script = ExtResource("1_edchg")
 id = "hearing"
 name = "Hearing"
-description = "Translates sound waves moving through air into neurological signals"
+description = ""
 texture = ExtResource("2_4n2h4")
+focus_rank = 0.0
+max_focus_rank = 3.0
 metadata/_custom_type_script = "uid://xtaxtyfcc6v7"

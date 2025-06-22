@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SensesList" load_steps=8 format=3 uid="uid://engs24h8wo6v"]
+
+[ext_resource type="Script" uid="uid://f8p6se4g0fwq" path="res://data/senses/senses_list.gd" id="1_upauc"]
+[ext_resource type="Script" uid="uid://xtaxtyfcc6v7" path="res://data/senses/sense.gd" id="2_bhcfd"]
+[ext_resource type="Resource" uid="uid://btdt24exb7tdt" path="res://data/senses/psychic.tres" id="3_bhcfd"]
+[ext_resource type="Resource" uid="uid://c0x48dlv6485f" path="res://data/senses/smell.tres" id="4_c7maq"]
+[ext_resource type="Resource" uid="uid://dtpep011r7j2f" path="res://data/senses/tactile.tres" id="5_of3t4"]
+[ext_resource type="Resource" uid="uid://cwkb60xm8nsd4" path="res://data/senses/thermal.tres" id="6_n6f75"]
+[ext_resource type="Resource" uid="uid://203487ar4bad" path="res://data/senses/hearing.tres" id="7_n6f75"]
+
+[resource]
+script = ExtResource("1_upauc")
+senses = Array[ExtResource("2_bhcfd")]([ExtResource("3_bhcfd"), ExtResource("4_c7maq"), ExtResource("5_of3t4"), ExtResource("6_n6f75"), ExtResource("7_n6f75")])
+metadata/_custom_type_script = "uid://f8p6se4g0fwq"

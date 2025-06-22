@@ -12,7 +12,7 @@ var gate_keeper: GateKeeper
 
 func _ready() -> void:
 	gate_keeper = get_tree().get_first_node_in_group("gate_keeper")
-	EventBus.sense_used.connect(_update_single_stat_ui)
+	EventBus.sense_focus_changed.connect(_update_single_stat_ui)
 	EventBus.visitor_admitted.connect(queue_free.unbind(1))
 	EventBus.visitor_denied.connect(queue_free.unbind(1))
 
@@ -23,8 +23,8 @@ func _set_visitor_stats(value: VisitorStats) -> void:
 
 	visitor_stats = value
 	senses_stats = visitor_stats.get_stats()
+	_set_initial_stats_ui()
 	_set_profile_name()
-	_update_stats_ui()
 
 
 func _set_profile_name() -> void:
@@ -54,13 +54,14 @@ func _danger_text(text: String) -> String:
 	return "[color=red]%s[/color]" % text
 
 
-func _update_stats_ui() -> void:
-	senses_stats.keys().map(_update_single_stat_ui)
+func _set_initial_stats_ui() -> void:
+	var senses: Array[Sense] = gate_keeper.get_senses()
+	senses.map(func(sense: Sense) -> void: _update_single_stat_ui(sense, 0.0))
 
 
-func _update_single_stat_ui(sense_id: String) -> void:
-	var sense_value_label: Label = get_node("%%%s" % sense_id.capitalize())
-	var focus_rank: int = gate_keeper.get_focus_rank(sense_id)
+func _update_single_stat_ui(sense: Sense, _variation: float) -> void:
+	var sense_value_label: Label = get_node("%%%s" % sense.id.capitalize())
+	var focus_rank: float = sense.get_focus_rank()
 
 	if not sense_value_label:
 		return
@@ -69,9 +70,9 @@ func _update_single_stat_ui(sense_id: String) -> void:
 	for i in range(focus_rank + 1):
 		# Get the sense value based on the focus rank
 		# if the focus rank exceeds the available stats don't append anything
-		if i >= senses_stats[sense_id].size():
+		if i >= senses_stats[sense.id].size():
 			break
-		var sense_text: String = str(senses_stats[sense_id][i])
+		var sense_text: String = str(senses_stats[sense.id][i])
 		sense_text_fragments.append(sense_text)
 
 	sense_value_label.text = ", ".join(sense_text_fragments)

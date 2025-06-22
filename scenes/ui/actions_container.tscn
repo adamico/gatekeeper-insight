@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://bycneypof0jv5"]
+
+[ext_resource type="Script" uid="uid://dq4ygsq6su6m3" path="res://scenes/ui/actions_container.gd" id="1_dg7xc"]
+
+[node name="ActionContainer" type="VBoxContainer"]
+offset_right = 664.0
+offset_bottom = 140.0
+script = ExtResource("1_dg7xc")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Make Your Choice Keeper!"
+horizontal_alignment = 1
+
+[node name="ActionsContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Allow" type="Button" parent="ActionsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Allow entry"
+
+[node name="Deny" type="Button" parent="ActionsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Deny entry"

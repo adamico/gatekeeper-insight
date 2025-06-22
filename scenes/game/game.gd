@@ -1,9 +1,9 @@
 class_name Main extends Node
 
-const UI = preload("res://scenes/ui/ui.tscn")
+const ACTIONS_CONTAINER = preload("res://scenes/ui/actions_container.tscn")
 
 const GATE_KEEPER = preload("res://scenes/gate_keeper/gate_keeper.tscn")
-const VISITOR = preload("res://scenes/visitor/visitor.tscn")
+const VISITOR = preload("res://scenes/visitor/visitor_container.tscn")
 const VISITOR_STATS: Array[VisitorStats] = [
 	preload("res://data/visitors/citizen.tres"),
 	preload("res://data/visitors/merchant.tres"),
@@ -19,7 +19,7 @@ var visitor: Node
 
 @onready var gate_keeper_position: Marker2D = %GateKeeperPosition
 @onready var visitor_position: Marker2D = %VisitorPosition
-
+@onready var actions_position: Marker2D = %ActionsPosition
 
 func _ready() -> void:
 	_start()
@@ -35,9 +35,9 @@ func _start() -> void:
 
 
 func _attach_ui() -> void:
-	var ui = UI.instantiate()
-	add_child(ui)
-	print("UI attached to the main scene.")
+	var ui = ACTIONS_CONTAINER.instantiate()
+	actions_position.add_child(ui)
+	print("ACTIONS_CONTAINER attached to the main scene.")
 
 
 func _initialize_gate_keeper() -> void:
@@ -48,6 +48,6 @@ func _initialize_gate_keeper() -> void:
 
 func _new_visitor() -> void:
 	visitor = VISITOR.instantiate()
-	var random_visitor_stats = VISITOR_STATS.pick_random()
-	visitor.visitor_stats = random_visitor_stats.create_instance()
+	var random_visitor_stats = VISITOR_STATS.pick_random().create_instance()
+	visitor.visitor_stats = random_visitor_stats
 	visitor_position.add_child(visitor)

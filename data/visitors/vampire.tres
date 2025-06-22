@@ -13,4 +13,5 @@ scent = Array[String](["subtle absence of typical body odors", "a faint odor of 
 sound = Array[String](["lack of typical human background sounds", "unusually quiet, almost no physiological sounds", "no heartbeat, no breathing", "a very high frequency hum of unnatural energy"])
 temperature = Array[String](["body temperature is subtly off, not warm enough", "uniform cool temperature across their entire body", "an unnatural cold aura radiating from their body", "a chilling void very like death itself"])
 tactile = Array[String](["their gait feels unusually smooth", "absence of subtle body tremors and internal vibrations", "internal density of unliving tissue", "the stillness of death animates this unearthly being"])
+senses_stats = null
 metadata/_custom_type_script = "uid://c47on7cf0g7pv"

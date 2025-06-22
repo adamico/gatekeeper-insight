@@ -1,15 +1,12 @@
-[gd_resource type="Resource" script_class="GateKeeperStats" load_steps=2 format=3 uid="uid://c2lntgk4apep6"]
+[gd_resource type="Resource" script_class="GateKeeperStats" load_steps=3 format=3 uid="uid://c2lntgk4apep6"]
 
 [ext_resource type="Script" uid="uid://cgbownqpc1qx0" path="res://data/gate_keeper/gate_keeper_stats.gd" id="1_fx5en"]
+[ext_resource type="Resource" uid="uid://engs24h8wo6v" path="res://data/senses/senses_list.tres" id="2_bwd57"]
 
 [resource]
 script = ExtResource("1_fx5en")
 known_profiles = Array[String]([])
-senses_focus_ranks = {
-"hearing": 0,
-"psychic": 0,
-"smell": 0,
-"tactile": 0,
-"thermal": 0
-}
+max_focus_pool = 15.0
+focus_pool_regen_rate = 1.0
+senses_list = ExtResource("2_bwd57")
 metadata/_custom_type_script = "uid://cgbownqpc1qx0"

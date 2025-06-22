@@ -13,4 +13,5 @@ scent = Array[String](["You detect rich perfumes and expensive, clean fabrics.",
 sound = Array[String](["You hear the soft rustle of fine silks and polished leather.", "Their voice is clear and carries an air of quiet authority.", "The subtle clink of fine jewelry or official insignia is present.", "Their breathing is calm and controlled, without typical anxieties."])
 temperature = Array[String](["Their body warmth is even and comfortable.", "No signs of recent exertion; their temperature is stable.", "Their core temperature reflects a well-regulated, un-stressed state.", "Their thermal signature is perfectly consistent with a life of comfort."])
 tactile = Array[String](["Their steps are measured, light, and almost gliding.", "You feel minimal internal tension or physical strain.", "Their posture is unnaturally straight, almost rigid.", "Their very presence creates subtle, controlled air displacements."])
+senses_stats = null
 metadata/_custom_type_script = "uid://c47on7cf0g7pv"
