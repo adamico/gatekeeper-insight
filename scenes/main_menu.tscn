@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://f08n6vx8ohof"]
+[gd_scene load_steps=17 format=3 uid="uid://f08n6vx8ohof"]
 
 [ext_resource type="Theme" uid="uid://rcmme2uurlhn" path="res://resources/theme.tres" id="1_bqqt6"]
 [ext_resource type="Script" uid="uid://c2sfobjhalj2f" path="res://scenes/main_menu.gd" id="2_8ln24"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://2ugvesemjsdr" path="res://assets/graphics/82-Unseen.png" id="8_flqon"]
 [ext_resource type="Texture2D" uid="uid://dchcniaa8sm3s" path="res://assets/graphics/report_card.png" id="9_lgwnu"]
 [ext_resource type="Texture2D" uid="uid://6qtg47624ci6" path="res://assets/graphics/Wildling_head_only-4k.png" id="10_1ajci"]
-[ext_resource type="Theme" uid="uid://cy61b8kvmmaai" path="res://resources/stats_theme.tres" id="11_7b55j"]
 [ext_resource type="AudioStream" uid="uid://coyltecaoj8rx" path="res://assets/sounds/COMPUTER-KEYBOARD_GEN-HDF-08226.ogg" id="12_flqon"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8ln24"]
@@ -123,21 +122,21 @@ alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 64
 text = "Credits"
 
 [node name="PlayButton" type="Button" parent="HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 64
 text = "Play"
 
 [node name="QuitButton" type="Button" parent="HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 64
 text = "Quit"
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -175,10 +174,10 @@ texture = ExtResource("8_flqon")
 
 [node name="Wildcards" type="TextureRect" parent="Credits"]
 layout_mode = 1
-offset_left = 976.0
-offset_top = 392.0
-offset_right = 1841.0
-offset_bottom = 1596.0
+offset_left = 605.0
+offset_top = 320.0
+offset_right = 1470.0
+offset_bottom = 1524.0
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("9_lgwnu")
 
@@ -189,13 +188,20 @@ texture = ExtResource("10_1ajci")
 
 [node name="BackButton" type="Button" parent="Credits"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 90.0
-offset_top = 495.0
-offset_right = 393.0
-offset_bottom = 672.0
-theme = ExtResource("11_7b55j")
-theme_override_font_sizes/font_size = 128
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -408.0
+offset_top = -135.0
+offset_right = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_bqqt6")
+theme_override_font_sizes/font_size = 64
 text = "Back"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

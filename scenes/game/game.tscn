@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b6ghup2ua3vo" path="res://scenes/game/game.gd" id="1_7h61r"]
 [ext_resource type="Texture2D" uid="uid://cks3qexeltlwe" path="res://assets/graphics/background.png" id="2_0sr1o"]
 [ext_resource type="Resource" uid="uid://c2lntgk4apep6" path="res://data/gate_keeper/gate_keeper_stats.tres" id="2_kelw5"]
-[ext_resource type="Theme" uid="uid://cy61b8kvmmaai" path="res://resources/stats_theme.tres" id="5_lfrn8"]
+[ext_resource type="Theme" uid="uid://rcmme2uurlhn" path="res://resources/theme.tres" id="5_5i0tg"]
 [ext_resource type="PackedScene" uid="uid://bh34o76f0de78" path="res://scenes/day_end/DayEnd.tscn" id="6_5i0tg"]
 [ext_resource type="PackedScene" uid="uid://dn7s3fjnhlrir" path="res://scenes/ui/general_ui.tscn" id="6_bdhmt"]
 
@@ -21,20 +21,23 @@ offset = Vector2(-849.797, -356.326)
 metadata/_edit_lock_ = true
 
 [node name="UI" parent="." instance=ExtResource("6_bdhmt")]
-offset_bottom = 224.0
-theme = ExtResource("5_lfrn8")
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 359.0
+offset_bottom = 246.0
+theme = ExtResource("5_5i0tg")
 
 [node name="GateKeeperPosition" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(85, 405)
-
-[node name="VisitorPosition" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(545, 315)
+position = Vector2(122, 405)
 
 [node name="ActionsPosition" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(545, 118)
+position = Vector2(545, 64)
+
+[node name="VisitorPosition" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(545, 258)
 
 [node name="DayEnd" parent="." instance=ExtResource("6_5i0tg")]
 unique_name_in_owner = true

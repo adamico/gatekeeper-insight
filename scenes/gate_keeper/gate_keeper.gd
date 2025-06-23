@@ -55,13 +55,13 @@ func _check_and_add_profile(visitor_stats: VisitorStats) -> void:
 	var senses = gate_keeper_stats.senses_list.senses
 	var total_senses_count = senses.size()
 	var sufficient_focus_count = 0
-	
+
 	# Compare each sense focus rank with visitor's corresponding stat
 	for sense in senses:
 		var visitor_sense_value = visitor_stats.get_sense_value(sense.id)
 		if sense.get_focus_rank() + 1 >= visitor_sense_value:
 			sufficient_focus_count += 1.0
-	
+
 	print("[GateKeeper] Sufficient focus count: %d out of %d" % [sufficient_focus_count, total_senses_count])
 	# Check if majority of senses have sufficient focus
 	if sufficient_focus_count > total_senses_count / 2.0:

@@ -2,69 +2,72 @@
 
 [ext_resource type="Script" uid="uid://day1yg2h7105y" path="res://scenes/ui/general_ui.gd" id="2_urydd"]
 
-[node name="GeneralUIContainer" type="MarginContainer"]
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 104.0
-grow_horizontal = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
+[node name="GeneralUIContainer" type="PanelContainer"]
+offset_right = 344.0
+offset_bottom = 224.0
 script = ExtResource("2_urydd")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Day" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Day" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="DayLabel" type="Label" parent="VBoxContainer/Day"]
+[node name="DayLabel" type="Label" parent="MarginContainer/VBoxContainer/Day"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Day:"
 
-[node name="DayValue" type="Label" parent="VBoxContainer/Day"]
+[node name="DayValue" type="Label" parent="MarginContainer/VBoxContainer/Day"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "1"
 
-[node name="RemainingVisitors" type="HBoxContainer" parent="VBoxContainer"]
+[node name="RemainingVisitors" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="RemainingVisitorsLabel" type="Label" parent="VBoxContainer/RemainingVisitors"]
+[node name="RemainingVisitorsLabel" type="Label" parent="MarginContainer/VBoxContainer/RemainingVisitors"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Visitors remaining:"
 
-[node name="RemainingVisitorsValue" type="Label" parent="VBoxContainer/RemainingVisitors"]
+[node name="RemainingVisitorsValue" type="Label" parent="MarginContainer/VBoxContainer/RemainingVisitors"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "1"
 
-[node name="Accepted" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Accepted" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="AcceptedLabel" type="Label" parent="VBoxContainer/Accepted"]
+[node name="AcceptedLabel" type="Label" parent="MarginContainer/VBoxContainer/Accepted"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Accepted:"
 
-[node name="AcceptedValue" type="Label" parent="VBoxContainer/Accepted"]
+[node name="AcceptedValue" type="Label" parent="MarginContainer/VBoxContainer/Accepted"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "0"
 
-[node name="Denied" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Denied" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="DeniedLabel" type="Label" parent="VBoxContainer/Denied"]
+[node name="DeniedLabel" type="Label" parent="MarginContainer/VBoxContainer/Denied"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Denied:"
 
-[node name="DeniedValue" type="Label" parent="VBoxContainer/Denied"]
+[node name="DeniedValue" type="Label" parent="MarginContainer/VBoxContainer/Denied"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32

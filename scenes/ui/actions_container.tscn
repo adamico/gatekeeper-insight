@@ -8,6 +8,7 @@
 offset_right = 664.0
 offset_bottom = 159.0
 theme = ExtResource("1_0msoe")
+theme_override_constants/separation = 16
 script = ExtResource("1_dg7xc")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

@@ -2,21 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://bkg06xnuh714c" path="res://assets/graphics/button9_slice.png" id="1_7ct1h"]
 [ext_resource type="FontFile" uid="uid://b3wwca5vu7ull" path="res://assets/fonts/EvilEmpire-lx5R0.ttf" id="1_d4nwg"]
-[ext_resource type="Texture2D" uid="uid://vpf7ogiuhyav" path="res://assets/graphics/panel9_slice.png" id="2_886mr"]
+[ext_resource type="StyleBox" uid="uid://dlj56fquw2xrx" path="res://resources/button.tres" id="2_b751m"]
+[ext_resource type="StyleBox" uid="uid://c6bp1wi1xdu4g" path="res://resources/panel.tres" id="3_b751m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_886mr"]
 texture = ExtResource("1_7ct1h")
-texture_margin_left = 25.0
-texture_margin_top = 25.0
-texture_margin_right = 25.0
-texture_margin_bottom = 25.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b751m"]
-texture = ExtResource("2_886mr")
-texture_margin_left = 25.0
-texture_margin_top = 25.0
-texture_margin_right = 25.0
-texture_margin_bottom = 25.0
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
 
 [resource]
 default_font = ExtResource("1_d4nwg")
@@ -24,6 +18,6 @@ Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(0.964706, 0.839216, 0.741176, 1)
 Button/styles/disabled = SubResource("StyleBoxTexture_886mr")
 Button/styles/hover = SubResource("StyleBoxTexture_886mr")
-Button/styles/normal = SubResource("StyleBoxTexture_886mr")
+Button/styles/normal = ExtResource("2_b751m")
 Button/styles/pressed = SubResource("StyleBoxTexture_886mr")
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_b751m")
+PanelContainer/styles/panel = ExtResource("3_b751m")
