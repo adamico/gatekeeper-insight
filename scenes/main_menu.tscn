@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://f08n6vx8ohof"]
+[gd_scene load_steps=19 format=3 uid="uid://f08n6vx8ohof"]
 
 [ext_resource type="Theme" uid="uid://rcmme2uurlhn" path="res://resources/theme.tres" id="1_bqqt6"]
 [ext_resource type="Script" uid="uid://c2sfobjhalj2f" path="res://scenes/main_menu.gd" id="2_8ln24"]
 [ext_resource type="Texture2D" uid="uid://cks3qexeltlwe" path="res://assets/graphics/background.png" id="2_wu84c"]
 [ext_resource type="Texture2D" uid="uid://318mr7ueabam" path="res://assets/graphics/thinker.png" id="3_8ln24"]
+[ext_resource type="LabelSettings" uid="uid://b3bga63otwd8j" path="res://resources/main_title_label.tres" id="5_1ajci"]
 [ext_resource type="Texture2D" uid="uid://c5iw3nl88p88l" path="res://assets/graphics/bodies.png" id="5_8ln24"]
 [ext_resource type="AudioStream" uid="uid://cx428ii1wqjcs" path="res://assets/graphics/AAM530_001_Politica_Full.mp3" id="6_rtw2f"]
 [ext_resource type="Script" uid="uid://bc2suj2evklt1" path="res://scenes/credits.gd" id="7_lgwnu"]
@@ -11,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dchcniaa8sm3s" path="res://assets/graphics/report_card.png" id="9_lgwnu"]
 [ext_resource type="Texture2D" uid="uid://6qtg47624ci6" path="res://assets/graphics/Wildling_head_only-4k.png" id="10_1ajci"]
 [ext_resource type="AudioStream" uid="uid://coyltecaoj8rx" path="res://assets/sounds/COMPUTER-KEYBOARD_GEN-HDF-08226.ogg" id="12_flqon"]
+[ext_resource type="PackedScene" uid="uid://gmksaobkfi47" path="res://scenes/intro/intro.tscn" id="12_rcqid"]
+[ext_resource type="Script" uid="uid://cydcw5554a0lu" path="res://scenes/intro/intro.gd" id="13_rcqid"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8ln24"]
 particles_animation = true
@@ -31,9 +34,6 @@ scale_max = 0.5
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 anim_offset_max = 1.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_rtw2f"]
-font_size = 96
 
 [sub_resource type="Gradient" id="Gradient_ooihk"]
 colors = PackedColorArray(0.163939, 0.0929236, 0.0377782, 1, 0.163939, 0.0929236, 0.0377782, 1)
@@ -80,12 +80,12 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -614.0
-offset_top = 130.0
+offset_top = 123.0
 offset_right = 614.0
-offset_bottom = 265.0
+offset_bottom = 258.0
 grow_horizontal = 2
 text = "The Gatekeeper's Insight"
-label_settings = SubResource("LabelSettings_rtw2f")
+label_settings = ExtResource("5_1ajci")
 horizontal_alignment = 1
 
 [node name="Gatekeeper" type="TextureRect" parent="."]
@@ -96,45 +96,49 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -128.0
-offset_top = -40.0
+offset_top = -18.0
 offset_right = 128.0
-offset_bottom = 216.0
+offset_bottom = 238.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_8ln24")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -614.0
-offset_top = -135.0
-offset_right = 614.0
+offset_left = -514.0
+offset_top = -84.0
+offset_right = 514.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
 alignment = 1
 
-[node name="CreditsButton" type="Button" parent="HBoxContainer"]
+[node name="CreditsButton" type="Button" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Credits"
 
-[node name="PlayButton" type="Button" parent="HBoxContainer"]
+[node name="PlayButton" type="Button" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Play"
 
-[node name="QuitButton" type="Button" parent="HBoxContainer"]
+[node name="QuitButton" type="Button" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Quit"
@@ -207,3 +211,14 @@ text = "Back"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("12_flqon")
+
+[node name="Intro" parent="." instance=ExtResource("12_rcqid")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+script = ExtResource("13_rcqid")

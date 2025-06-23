@@ -29,15 +29,15 @@ theme = ExtResource("5_5i0tg")
 
 [node name="GateKeeperPosition" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(122, 405)
+position = Vector2(88, 405)
 
 [node name="ActionsPosition" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(545, 64)
+position = Vector2(560, 95)
 
 [node name="VisitorPosition" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(545, 258)
+position = Vector2(570, 246)
 
 [node name="DayEnd" parent="." instance=ExtResource("6_5i0tg")]
 unique_name_in_owner = true

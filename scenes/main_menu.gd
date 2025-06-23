@@ -1,12 +1,11 @@
 extends Control
 
-const GAME_SCENE := preload("res://scenes/game/game.tscn")
-
 @onready var play_button: Button = %PlayButton
 @onready var credits_button: Button = %CreditsButton
 @onready var quit_button: Button = %QuitButton
 
 @onready var credits: Node = %Credits
+@onready var intro: Node = %Intro
 
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
@@ -24,5 +23,5 @@ func _on_credits_button_pressed() -> void:
 
 func _on_play_button_pressed() -> void:
 	audio_stream_player.play()
-	print("Play button pressed. Starting the game...")
-	get_tree().change_scene_to_packed(GAME_SCENE)
+	print("Play button pressed. Showing the intro screen...")
+	intro.show()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://fmqnq17byogm"]
+[gd_scene load_steps=7 format=3 uid="uid://fmqnq17byogm"]
 
 [ext_resource type="Texture2D" uid="uid://318mr7ueabam" path="res://assets/graphics/thinker.png" id="1_8m8nn"]
 [ext_resource type="Script" uid="uid://bkaaqsx8x6yy" path="res://scenes/gate_keeper/gate_keeper.gd" id="1_nhfpb"]
@@ -6,24 +6,29 @@
 [ext_resource type="Theme" uid="uid://rcmme2uurlhn" path="res://resources/theme.tres" id="9_pj1yq"]
 [ext_resource type="LabelSettings" uid="uid://byss7w7gmcpt" path="res://resources/stats_bold_label.tres" id="10_vij0e"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_w8es7"]
+font_size = 48
+shadow_color = Color(1, 0.29, 0.4675, 1)
+
 [node name="GateKeeper" type="Node2D" groups=["gate_keeper"]]
 script = ExtResource("1_nhfpb")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 36.0
+offset_left = 6.0
 offset_top = -75.0
-offset_right = 224.0
-offset_bottom = -41.0
+offset_right = 288.0
+offset_bottom = -24.0
 theme = ExtResource("9_pj1yq")
 theme_override_font_sizes/font_size = 32
 text = "The Gatekeeper"
+label_settings = SubResource("LabelSettings_w8es7")
 
 [node name="FocusPool" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(90, 0)
 offset_left = 56.0
-offset_top = -35.0
+offset_top = -24.0
 offset_right = 215.0
-offset_bottom = -2.0
+offset_bottom = 9.0
 size_flags_vertical = 0
 theme = ExtResource("4_w8es7")
 
@@ -45,7 +50,7 @@ texture = ExtResource("1_8m8nn")
 centered = false
 
 [node name="SensesPosition" type="Marker2D" parent="."]
-position = Vector2(282, -272)
+position = Vector2(318, -272)
 
 [node name="SensesRootContainer" type="MarginContainer" parent="SensesPosition"]
 unique_name_in_owner = true

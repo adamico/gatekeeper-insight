@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bycneypof0jv5"]
+[gd_scene load_steps=5 format=3 uid="uid://bycneypof0jv5"]
 
 [ext_resource type="Theme" uid="uid://rcmme2uurlhn" path="res://resources/theme.tres" id="1_0msoe"]
 [ext_resource type="Script" uid="uid://dq4ygsq6su6m3" path="res://scenes/ui/actions_container.gd" id="1_dg7xc"]
 [ext_resource type="AudioStream" uid="uid://coyltecaoj8rx" path="res://assets/sounds/COMPUTER-KEYBOARD_GEN-HDF-08226.ogg" id="3_5u8p7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5u8p7"]
+font_size = 64
+shadow_color = Color(1, 0.29, 0.4675, 1)
 
 [node name="ActionContainer" type="VBoxContainer"]
 offset_right = 664.0
@@ -11,14 +15,12 @@ theme = ExtResource("1_0msoe")
 theme_override_constants/separation = 16
 script = ExtResource("1_dg7xc")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer"]
+[node name="Label" type="Label" parent="."]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Make Your Choice Keeper!"
+label_settings = SubResource("LabelSettings_5u8p7")
 horizontal_alignment = 1
 
 [node name="ActionsContainer" type="HBoxContainer" parent="."]
