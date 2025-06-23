@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bh34o76f0de78"]
+[gd_scene load_steps=8 format=3 uid="uid://bh34o76f0de78"]
 
 [ext_resource type="Theme" uid="uid://cy61b8kvmmaai" path="res://resources/stats_theme.tres" id="1_nlc43"]
+[ext_resource type="Theme" uid="uid://rcmme2uurlhn" path="res://resources/theme.tres" id="1_uq83p"]
 [ext_resource type="Script" uid="uid://ngfn63nlr3xx" path="res://scenes/day_end/day_end.gd" id="2_hreyx"]
 [ext_resource type="AudioStream" uid="uid://coyltecaoj8rx" path="res://assets/sounds/COMPUTER-KEYBOARD_GEN-HDF-08226.ogg" id="3_2efs6"]
 
@@ -21,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_nlc43")
+theme = ExtResource("1_uq83p")
 script = ExtResource("2_hreyx")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -44,51 +45,59 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="RatingContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(250, 0)
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="DayLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/RatingContainer"]
+[node name="RatingContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme = ExtResource("1_nlc43")
+
+[node name="DayLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/RatingContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Day ?? complete"
 
-[node name="ScoreLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/RatingContainer"]
+[node name="ScoreLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/RatingContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Average Score: ??%"
 
-[node name="RatingLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/RatingContainer"]
+[node name="RatingLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/RatingContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Rating: ??"
 
-[node name="StatsContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="StatsContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(750, 0)
 layout_mode = 2
+theme = ExtResource("1_nlc43")
 
-[node name="TotalLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StatsContainer"]
+[node name="TotalLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/StatsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Total visitors: "
 
-[node name="AdmittedLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StatsContainer"]
+[node name="AdmittedLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/StatsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Admitted:"
 
-[node name="DeniedLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StatsContainer"]
+[node name="DeniedLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/StatsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Denied:"
 
-[node name="CorrectLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StatsContainer"]
+[node name="CorrectLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/StatsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Correct decisions:"
 
-[node name="IncorrectLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StatsContainer"]
+[node name="IncorrectLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/StatsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Incorrect decisions:"
