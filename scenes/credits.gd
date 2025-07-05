@@ -1,3 +1,8 @@
+## Path: scenes/credits.gd
+## Credits.gd
+## This script manages the credits scene, allowing users to return to the main menu.
+## It extends Control and handles the back button functionality.
+## It plays an audio stream when the back button is pressed.
 extends Control
 
 @onready var back_button: Button = %BackButton
